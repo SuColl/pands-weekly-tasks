@@ -54,5 +54,8 @@ while number != 1:
     
     # print the result of each step, again without newlines
     print(number, end=" ")
+
+
+# In theory, this programme could run endlessly, if the input integer is one for which the Collatz sequence does not end. The existence of such an integer has not yet been proven.
     
 

@@ -56,6 +56,11 @@ while number != 1:
     print(number, end=" ")
 
 
+# Notes:
 # In theory, this programme could run endlessly, if the input integer is one for which the Collatz sequence does not end. The existence of such an integer has not yet been proven.
-    
+# I used several if/elif/else statements to try and check the validity of the input integer and avoid the program stopping due to errors. There are probably better ways to handle errors / exceptions, but I don't know them yet. 
 
+# Sources consulted:
+# Blog post on choosing between isdigit(), isnumeric(), isdecimal(), which reminded me to strip whitespace from the input: https://miguendes.me/python-isdigit-isnumeric-isdecimal
+# Follow-up reading on w3schools: https://www.w3schools.com/python/ref_string_isdecimal.asp, https://www.w3schools.com/python/ref_string_isdigit.asp, https://www.w3schools.com/python/ref_string_isnumeric.asp
+# Handy method of slicing the negative sign off a negative integer, and using isdigit() to validate the rest, mentioned on stackoverflow: "How do I check if a string is a negative number before passing it through int()?" https://stackoverflow.com/a/78912188

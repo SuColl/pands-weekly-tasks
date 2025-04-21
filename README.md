@@ -18,6 +18,6 @@ This program asks the user to input any positive integer, then repeats two simpl
 - this program performs some simple checks on the user input; if the input is not a positive integer, it requests another input.
 - future development proposed: (1) allow user to enter a special string to stop the program? (2) count the number of steps the integer takes to reach 1? (3) compare this result to nearby integers?
 
-## Week 05 Task: weekday.py
+## Week 05 Task: weekday.py
 This program outputs whether or not today (at the time of running) is a weekday. There is no user input.
 

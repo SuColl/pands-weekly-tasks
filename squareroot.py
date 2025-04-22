@@ -3,10 +3,26 @@
 
 # author: Susan Collins
 
-# custom sqrt function, currently does nothing but prints a line
+# v01: rough layout of program flow
+# v02: added initial version of sqrt calculation
+
+
+# custom sqrt function, currently prints results at each step
 def sqrt(input):
     print(f"you called the sqrt function for {input}")
 
+    # choose a starting guess for the square root - roughly guessing one-tenth
+    guess = input * 0.1
+    print(guess)
+
+    # loop over the Newtonian iteration 100 times
+    for loop in range(0, 100):
+        # see README for mathematical equation
+        guess = 0.5 * (guess + (input / guess)) 
+        print(guess)
+
+    # return the final guess
+    return(guess)
 
 
 ### Main code block ###
@@ -14,4 +30,7 @@ def sqrt(input):
 number = float(input("Please enter a positive floating-point number: "))
 
 # call the custom sqrt function
-sqrt(number)
+answer = sqrt(number)
+
+# print result
+print(f"The square root of {number} is {answer}")

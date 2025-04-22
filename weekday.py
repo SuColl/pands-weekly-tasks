@@ -2,6 +2,9 @@
 # Author: Susan Collins
 
 # sources used: https://www.w3schools.com/python/python_datetime.asp and https://docs.python.org/3/library/datetime.html
+
+# lovely deep blogpost about datetime from towardsdatascience.com: https://towardsdatascience.com/time-travel-made-easy-a-comprehensive-guide-to-python-datetime-326dd1c57391/
+
 # note: This weekly task seems very short and I wonder if I'm missing something...
 
 # import the module datetime which allows me to access date and time objects

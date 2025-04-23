@@ -36,13 +36,19 @@ It is the weekend, yay!
 
 ## Week 06 Task: squareroot.py
 This program takes a positive floating-point number as input and outputs an approximation of its square root, using a custom sqrt() function, as an exercise in creating functions. 
-- The custom sqrt() function uses Heron's method of calculating square roots, which is equivalent to Newton's method of finding square roots. This is an iterative process where each step gives a result that is closer to the true answer. Given a positive number $a$, for which you want to find the square root, and given a starting approximate value of the root $x_n$, the iteration is given by:
+- The custom sqrt() function uses Newton's method of finding square roots. This is an iterative process where each step gives a result that is closer to the true answer. Given a positive number $a$, for which you want to find the square root, and given a starting approximate value of the root $x_n$, the iteration is given by:
 
 
 $$
 x_{n+1}= \frac{1}{2} \left({x_n + \frac{a}{x_n}}\right)
 $$
 
-- considerations: how to get the start value? how many iterations to do, how to know if you're close enough?
+ - Stopping the loop: Initially I ran the interation loop 100 times, but this is often unnecessary. Ideally I would like the loop to stop when it has found the correct answer, but because the comparison of floats can be inexact, the loop may not ever stop. So, I added a parameter to the sqrt() function that indicates how close to the true answer the calculated answer must be to be considered 'correct' and end the loop. 
 
-(LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/)
+- considerations: how to get the start value?
+
+Comparing Floats: https://www.geeksforgeeks.org/comparing-floating-points-number-for-almost-equality-in-python/
+
+Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
+
+LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/

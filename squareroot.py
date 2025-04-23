@@ -5,21 +5,32 @@
 
 # v01: rough layout of program flow
 # v02: added initial version of sqrt calculation
+# v03: added tolerance parameter to sqrt() to tell the square root calculation loop when to stop. 
 
 
 # custom sqrt function, currently prints results at each step
-def sqrt(input):
+def sqrt(input, tolerance = 0):
+    # The tolerance parameter tells the fuction how close the final guess must be to the true root
     print(f"you called the sqrt function for {input}")
+
+    # if the tolerance parameter is 0, set it to be 0.001% of the input number
+    if tolerance == 0:
+        tolerance = input * 0.00001
 
     # choose a starting guess for the square root - roughly guessing one-tenth
     guess = input * 0.1
-    print(guess)
+    difference = abs(input - (guess * guess))
+    print(guess, difference, tolerance)
 
-    # loop over the Newtonian iteration 100 times
-    for loop in range(0, 100):
+    # loop over the Newtonian iteration until the difference between the guess and the real root is less than the tolerance
+    while difference > tolerance:
         # see README for mathematical equation
         guess = 0.5 * (guess + (input / guess)) 
-        print(guess)
+
+        difference = abs(input - (guess * guess))
+
+        print(guess, difference, tolerance)
+
 
     # return the final guess
     return(guess)
@@ -29,7 +40,7 @@ def sqrt(input):
 # No validation or error-checking yet
 number = float(input("Please enter a positive floating-point number: "))
 
-# call the custom sqrt function
+# calling the custom sqrt function with no tolerance specified
 answer = sqrt(number)
 
 # print result

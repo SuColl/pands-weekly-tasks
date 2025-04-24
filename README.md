@@ -52,3 +52,14 @@ Comparing Floats: https://www.geeksforgeeks.org/comparing-floating-points-number
 Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
 
 LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
+
+
+# Week 07 Task: count_es.py
+>Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
+>The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
+>Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
+
+Txt files have been downloaded from [Project Gutenberg](www.gutenberg.org)
+
+Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+

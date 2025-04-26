@@ -59,7 +59,18 @@ LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdo
 >The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
 >Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
 
-Txt files have been downloaded from [Project Gutenberg](www.gutenberg.org)
+Txt files for development were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
 
 Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm
 
+
+# Week 08 Task: plottask.py
+>Instructions: Write a program called plottask.py that displays:
+>    a histogram of a normal distribution of a 1000 values with a mean of 5 and standard deviation of 2, 
+>   and a plot of the function  h(x)=x3 in the range 0 to 10, 
+>on the one set of axes.
+>Some marks will be given for making the plot look nice (legend etc).
+>Please put a copy of the image of the plot (.png file) into the repository
+
+The NumPy documentation states that the RandomState function used in lectures has be superseded by the Generator method.
+Method from this program taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html

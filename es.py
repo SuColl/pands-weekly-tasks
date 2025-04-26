@@ -13,11 +13,26 @@ except ModuleNotFoundError:
     print("This program required the module 'sys'. Please install this module and try again.")
     exit()
 
+# Specify letter to be counted. The count will combine uppercase and lowercase.
+letter_to_count = 'e'
 
 # Function to print help message, called if there are no command-line arguments specified with this program. This function uses argv[0] to dynamically print the program name. 
 def print_help():
     print(f"This is a program to count the instanced of the letter 'e' in a text file.")
     print(f"This program should be called as: $ python {sys.argv[0]} <FILE.TXT>")
+
+# Function to count the instances of a letter in a given string. Returns the count as an integer.
+def count_letters(string, letter):
+    count = 0
+
+    #loop through all characters in the string
+    for char in range(0,len(string)):
+                
+        # using lower() here so that both uppercase and lowercase letters are counted 
+        if line[char].lower() == letter.lower():
+            count+=1
+    
+    return(count)
 
 
 # If there are no arguments on the command line, print the help message and end program. argv[0] is the name of this program, so len(sys.argv) will always be at least 1 when the program is run.
@@ -35,21 +50,11 @@ count = 0
 # open the specified text file read-only 
 try:
     with open (FILENAME, 'rt') as text_file:
-
         for line in text_file:
 
-            #loop through all characters in this line
-            for char in range(0,len(line)):
-                
-                # using lower() here so that upper-case e's are also countec
-                if line[char].lower() == 'e':
-                        
-                    count+=1
-
-            # sanity check - print the running count before each line
-            # print(f"{count} - {line}")
+            count += count_letters(line, letter_to_count)
             
-        print(f"Finished - there are {count} instance(s) of the letter e in the file {FILENAME} ")
+        print(f"Finished - there are {count} instance(s) of the letter {letter_to_count} in the file {FILENAME} ")
 
 
 # Exception if the file does not exist

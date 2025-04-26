@@ -72,5 +72,28 @@ Tutorial on passing command-line arguments to a Python program: https://www.tuto
 >Some marks will be given for making the plot look nice (legend etc).
 >Please put a copy of the image of the plot (.png file) into the repository
 
-The NumPy documentation states that the RandomState function used in lectures has be superseded by the Generator method.
-Method from this program taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
+The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
+The method to generate the normally-distributed datapoints for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
+
+
+
+# Notes on git commit messages
+I have not consistently used any particular git commit message convention in these weekly tasks, but I am slowly starting to incorporate the advice from the sources below. 
+
+There are many, **many** articles and blog posts on what comprises a 'good' Git commit message:
+ - [freeCodeCamp(2019): How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
+ - [Kelvin Romero @Medium(2023): Writing good commit messages](https://kelvinromero.medium.com/writing-good-commit-messages-527679b1babb)
+ - [Hashnode(2019): Which commit message convention do you use at work?](https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g)
+ - [Tim Pope(2008): A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+
+Common advice from these writers include:
+ - separate subject line (concise, approx 50 characters) and optional body text (longer description)
+ - ["Atomic Commits"](https://sparkbox.com/foundry/atomic_commits_with_git), i.e. each commit repesents one small, complete, independent chunk of work. This chunk should be large enough to contain a complete change, ideally with the codebase working both before and after the change, and also small enough that it can be described/understood easily and it represents only one change. If multiple changes are represented in one commit, it would be more difficult to track the history of the changes or their separate effects on the code. 
+  - Using the imperative tense of verbs. This convention seems to be a combination of (a) in English, verbs in this tense are usually shorter than in other tenses, (b) Git itself uses the imperative when it creates messages, so you might as well match. 
+
+ Many people explicitly follow the [Conventional Commits](https://www.conventionalcommits.org/en/about/) standard. This is a very detailed standard which is designed to allow the use of automated tools to parse and analyse the commit history. The full standard is not useful for me at this time, but one prominent feature which I have begun to use is the inclusion of a keyword at the start of each commit message to indicate the type of change, e.g.:
+ - feat: add a new feature
+ - fix: fix a bug
+ - docu: amend documentation
+
+ This is useful when looking back at past changes in the log, and it also reinforces the practice of only doing one type of change in each commit. 

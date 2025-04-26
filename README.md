@@ -54,7 +54,7 @@ Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
 LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
 
 
-# Week 07 Task: count_es.py
+## Week 07 Task: count_es.py
 >Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
 >The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
 >Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
@@ -64,7 +64,7 @@ Txt files for development were downloaded from [Project Gutenberg](www.gutenberg
 Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm
 
 
-# Week 08 Task: plottask.py
+## Week 08 Task: plottask.py
 >Instructions: Write a program called plottask.py that displays:
 >    a histogram of a normal distribution of a 1000 values with a mean of 5 and standard deviation of 2, 
 >   and a plot of the function  h(x)=x3 in the range 0 to 10, 
@@ -95,7 +95,7 @@ This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscri
 3.  Directly typing x³ works, and leaves the raw Markdown file more readable.
 
 
-# Notes on git commit messages
+## Notes on git commit messages
 I have not consistently used any particular git commit message convention in these weekly tasks, but I am slowly starting to incorporate the advice from the sources below. 
 
 There are many, **many** articles and blog posts on what comprises a 'good' Git commit message:

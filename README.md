@@ -33,11 +33,10 @@ Expected output if called on Saturday or Sunday:
 $ python weekday.py 
 It is the weekend, yay!
 ```
-
+------------------------------------------------------------------------
 ## Week 06 Task: squareroot.py
 This program takes a positive floating-point number as input and outputs an approximation of its square root, using a custom sqrt() function, as an exercise in creating functions. 
 - The custom sqrt() function uses Newton's method of finding square roots. This is an iterative process where each step gives a result that is closer to the true answer. Given a positive number $a$, for which you want to find the square root, and given a starting approximate value of the root $x_n$, the iteration is given by:
-
 
 $$
 x_{n+1}= \frac{1}{2} \left({x_n + \frac{a}{x_n}}\right)
@@ -47,23 +46,47 @@ $$
 
 - considerations: how to get the start value?
 
+### Research and Sources
+
 Comparing Floats: https://www.geeksforgeeks.org/comparing-floating-points-number-for-almost-equality-in-python/
 
 Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
 
 LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
 
-
-## Week 07 Task: count_es.py
+---------------------------------------------------------------
+## Week 07 Task: es.py
+**Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these are two files with separate histories.**
 >Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
 >The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
 >Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
 
+Additions: I added an option to specify a different character to be counted on the command-line, 
+as `$ python es.py <FILE.TXT> <optional letter>`
+
+### Expected Output
+```
+$ python es.py pride_and_prejudice.txt
+> filename is pride_and_prejudice.txt
+> Finished - there are 74451 instance(s) of the letter e in the file pride_and_prejudice.txt 
+```
+
+### Research and Sources
 Txt files for development were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
 
-Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm  
+Terminating a program (sys.exit()): https://stackoverflow.com/questions/73663/how-do-i-terminate-a-script
 
+Error handling: I found the correct names of exceptions for this program by trial and error. 
+- importing a module that had not been installed threw a ModuleNotFoundError.
+- passing a filename for which the file does not exist threw a FileNotFoundError.
+- attempting to open a binary file as a text file threw a UnicodeDecodeError.  
 
+Error Handling Sources:  
+W3schools on try/except/else/finally: https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0   
+W3schools list of Python built-in exceptions: https://www.w3schools.com/python/python_ref_exceptions.asp   
+
+---------------------------------------------------------------
 ## Week 08 Task: plottask.py
 >Instructions: Write a program called plottask.py that displays:
 >    a histogram of a normal distribution of a 1000 values with a mean of 5 and standard deviation of 2, 

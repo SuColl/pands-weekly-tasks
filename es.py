@@ -14,7 +14,7 @@ except ModuleNotFoundError:
     exit()
 
 
-# Function to print help message, called if there are no command-line arguments called with this program. This function uses argv[0] to dynamically print the program name. 
+# Function to print help message, called if there are no command-line arguments specified with this program. This function uses argv[0] to dynamically print the program name. 
 def print_help():
     print(f"This is a program to count the instanced of the letter 'e' in a text file.")
     print(f"This program should be called as: $ python {sys.argv[0]} <FILE.TXT>")
@@ -41,15 +41,15 @@ try:
             #loop through all characters in this line
             for char in range(0,len(line)):
                 
-                # only looking for lower-case e's here
-                if line[char] == 'e':
+                # using lower() here so that upper-case e's are also countec
+                if line[char].lower() == 'e':
                         
                     count+=1
 
             # sanity check - print the running count before each line
             # print(f"{count} - {line}")
             
-        print(f"Finished - there are {count} instances of the letter e in the file {FILENAME} ")
+        print(f"Finished - there are {count} instance(s) of the letter e in the file {FILENAME} ")
 
 
 # Exception if the file does not exist

@@ -34,9 +34,22 @@ y_values = x_values ** index
 
 
 # Plot the histogram of the normally distributed data points
-plt.hist(distrib_values)
+plt.hist(distrib_values, label="Normal distribution")
 # Plot the function y=x^2, on the same plot
-plt.plot(x_values,y_values)
+plt.plot(x_values,y_values, label="$y=x^3$")
+
+# Add title and labels
+# Single backslash inside the f-string lets me break it over two lines, for better code readability.
+# TeX symbols \mu and \sigma require double escapes inside the string.
+plt.title(f"Histogram of Normally Distributed Data Points (n={n_distrib_values}, $\\mu$={distrib_mean}, $\\sigma$={distrib_stddev})\
+\n and plot of $y=x^{index}$")
+
+plt.xlabel("X value")
+plt.ylabel("Frequency of value \\ $x^3$")
+plt.legend()
+
+# Print to file
+plt.savefig('histogram_and_cube_function.png')
 
 # Display to screen
 plt.show()

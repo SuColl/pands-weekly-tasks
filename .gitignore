@@ -1,6 +1,8 @@
-# Local files
+# Local files used for testing
 pride_and_prejudice.txt
-
+frankenstein.txt
+testbin.bin
+test_short.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

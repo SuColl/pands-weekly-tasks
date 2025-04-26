@@ -26,10 +26,10 @@ def count_letters(string, letter):
     count = 0
 
     #loop through all characters in the string
-    for char in range(0,len(string)):
+    for char in string:
                 
         # using lower() here so that both uppercase and lowercase letters are counted 
-        if line[char].lower() == letter.lower():
+        if char.lower() == letter.lower():
             count+=1
     
     return(count)

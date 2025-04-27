@@ -28,10 +28,10 @@ distrib_values = rng.normal(distrib_mean, distrib_stddev, n_distrib_values)
 
 # Cubic function parameters:
 cubic_range_min = 0
-cubic_range_max = 11  # set to 11 as I want to include the point x=10
+cubic_range_max = 10 
 index = 3
-# Generate the data
-x_values = np.arange(cubic_range_min,cubic_range_max,1)
+# Generate the data over many points
+x_values = np.arange(cubic_range_min,cubic_range_max,0.001)
 y_values = x_values ** index
 
 
@@ -71,7 +71,7 @@ ax2 = ax1.twinx()
 # Plot the function h(x)=x^3, on the second Axes
 ax2.plot(
     x_values,y_values, label="$h(x)=x^3$", color="red", 
-    marker="o", markersize=4, linewidth=0.8
+    linewidth=1.2
     )
 ax2.set_ylabel(f"$h(x)=x^{index}$", color="red")
 ax2.tick_params(axis='y', labelcolor="red")

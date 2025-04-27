@@ -1,15 +1,28 @@
 # bank.py
-# This program reads in two amounts in cent, adds them and returns the sum formatted in Euro.
+# This program reads in two amounts in cent, 
+# adds them and returns the sum formatted in Euro.
 # author: Susan Collins
 
-#get first amount (Assumes valid input)
-amount1=int(input("Enter the first amount (cent):"))
+# get first amount and check that it is an integer. If not, ask again.
+amount1 = False
+while amount1 == False:
+    try:
+        amount1=int(input("Enter the first amount (cent):"))
+    except ValueError:
+        print(f"That is not a valid amount of cent.")
 
-#get second amount (Assumes valid input)
-amount2=int(input("Enter the second amount (cent):"))
+
+#get second amount and check that it is an integer. If not, ask again.
+amount2 = False
+while amount2 == False:
+    try:
+        amount2=int(input("Enter the second amount (cent):"))
+    except ValueError:
+        print(f"That is not a valid amount of cent.")
 
 ##################################
-# Method 1 - arithmetically calculate the number of whole euro and the number of remaining cents separately.
+# Method 1 - arithmetically calculate the number of whole euro 
+# and the number of remaining cents separately.
 wholeEuro = (amount1 + amount2) // 100
 remainingCent = (amount1 + amount2) - (wholeEuro * 100)
 print(f"(Method 1): The sum of these is €{wholeEuro}.{remainingCent}")

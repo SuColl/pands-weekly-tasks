@@ -117,8 +117,19 @@ This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscri
 2.  Embedded LaTeX: `$x^{3}$`  displays as $x^{3}$ 
 3.  Directly typing x³ works, and leaves the raw Markdown file more readable.
 
+----------------------------------------------------------
+# General Research / Reading / Notes
 
-## Notes on git commit messages
+## Research notes on Python style conventions
+The [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/) outlines coding conventions for the Python standard library, which are commonly adopted as general style standards. In this repo I am adhering to:
+- "Limit all lines to a maximum of 79 characters." (avoids the default wrapping in most tools)
+- "Function names should be lowercase, with words separated by underscores as necessary to improve readability." 
+
+### Other reading on this topic:
+[Python Morsels: Breaking up long lines of code in Python](https://www.pythonmorsels.com/breaking-long-lines-code-python/)  
+[GeeksForGeeks: Python – Multi-Line Statements](https://www.geeksforgeeks.org/python-multi-line-statements/)
+
+## Research notes on git commit messages
 I have not consistently used any particular git commit message convention in these weekly tasks, but I am slowly starting to incorporate the advice from the sources below. 
 
 There are many, **many** articles and blog posts on what comprises a 'good' Git commit message:

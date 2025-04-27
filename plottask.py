@@ -57,7 +57,7 @@ plt.hist(
 # Plot the function y=x^3, on the same plot
 plt.plot(
     x_values,y_values, label="$y=x^3$", color="m", 
-    marker="o", linewidth=0.5
+    marker="o", markersize=3, linewidth=0.5
     )
 
 # Add title and labels
@@ -71,6 +71,9 @@ plt.title(
 plt.xlabel("X value")
 plt.ylabel(f"Frequency of value \\ $x^{index}$")
 plt.legend()
+
+# set x-axis ticks to show all bin values in histogram
+plt.xticks(range(lowest_bin_centre, highest_bin_centre, 1))
 
 # Print to file
 plt.savefig('histogram_and_cube_function.png')

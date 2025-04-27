@@ -31,7 +31,7 @@ cubic_range_min = 0
 cubic_range_max = 11  # set to 11 as I want to include the point x=10
 index = 3
 # Generate the data
-x_values = np.arange(cubic_range_min,cubic_range_max)
+x_values = np.arange(cubic_range_min,cubic_range_max,1)
 y_values = x_values ** index
 
 
@@ -72,11 +72,15 @@ plt.xlabel("X value")
 plt.ylabel(f"Frequency of value \\ $x^{index}$")
 plt.legend()
 
-# set x-axis ticks to show all bin values in histogram
-plt.xticks(range(lowest_bin_centre, highest_bin_centre, 1))
+# set x-axis ticks be integer values that range from the lowest value in 
+# either plot, to the highest value in either plot.
+x_axis_minimum = min(lowest_bin_centre, round(cubic_range_min)-1)
+x_axis_maximum = max(highest_bin_centre, round(cubic_range_max)+1)
+plt.xticks(range(x_axis_minimum, x_axis_maximum, 1))
 
 # Print to file
 plt.savefig('histogram_and_cube_function.png')
 
 # Display to screen
 plt.show()
+

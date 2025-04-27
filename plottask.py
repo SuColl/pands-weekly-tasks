@@ -1,5 +1,5 @@
 # this program displays: 
-#  - a histogram of a normal distribution of a 1000 values 
+#  - a histogram of a normal distribution of 1000 values 
 # with a mean of 5 and standard deviation of 2, 
 #  - and a plot of the function  h(x)=x3 in the range 0 to 10, 
 #  on the one set of axes.
@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# Parameters to generate set of 1000 normally distributed data points
+# Parameters to generate set of normally distributed data points
 distrib_mean = 5
 distrib_stddev = 2
 n_distrib_values = 1000
@@ -22,7 +22,7 @@ n_distrib_values = 1000
 # This method taken from NumPy documentation - see README
 # Seed the random number generator, for debugging purposes
 rng = np.random.default_rng(seed=1)
-# Generate set of 1000 normally distributed data points
+# Generate set of normally distributed data points
 distrib_values = rng.normal(distrib_mean, distrib_stddev, n_distrib_values)
 
 
@@ -36,47 +36,70 @@ y_values = x_values ** index
 
 
 # Calculate the histogram bin limits.
-# I want to centre a bin on each integer value. I need to find the  
-# centre of the lowest bin and the centre of the highest bin.
-
-# Subtract 0.5 from min & max to round down
+# I want bins of width 1 and to centre a bin on each integer value.
+# I need to find the centre of the lowest bin 
+# and the centre of the highest bin.
 lowest_bin_centre = round(min(distrib_values))
 highest_bin_centre = round(max(distrib_values))
 
 # Generate list of bin edges as floats
-integer_bins = np.arange(lowest_bin_centre - 0.5, highest_bin_centre + 0.5, 1)
+integer_bins = np.arange(lowest_bin_centre-0.5, highest_bin_centre+0.5, 1)
 
 
-# Plot the histogram of the normally distributed data points
-plt.hist(
+########## Building the plot
+# use subplots() to get access to the Axes object.
+# An Axes object encapsulates all the elements of an 
+# individual (sub-)plot in a figure.
+fig, ax1 = plt.subplots()
+
+
+# Plot the histogram of the normally distributed data points on first Axes
+ax1.hist(
     distrib_values, bins=integer_bins, label="Normal distribution", 
-    color="cyan", edgecolor = "white"
+    color="aqua", edgecolor = "white"
     )
+ax1.set_xlabel("X-values")
+ax1.set_ylabel("Frequency", color="aqua")
+ax1.tick_params(axis='y', labelcolor="aqua")
+# make sure y-axis starts at 0 - must call this after plotting the data
+ax1.set_ylim(bottom = 0)
 
 
-# Plot the function y=x^3, on the same plot
-plt.plot(
-    x_values,y_values, label="$y=x^3$", color="m", 
-    marker="o", markersize=3, linewidth=0.5
+# create second Axes object that has the same x-axis as the first 
+ax2 = ax1.twinx()
+
+# Plot the function h(x)=x^3, on the second Axes
+ax2.plot(
+    x_values,y_values, label="$h(x)=x^3$", color="red", 
+    marker="o", markersize=4, linewidth=0.8
     )
+ax2.set_ylabel(f"$h(x)=x^{index}$", color="red")
+ax2.tick_params(axis='y', labelcolor="red")
+# make sure y-axis starts at 0 - must call this after plotting the data
+ax2.set_ylim(bottom = 0)
 
-# Add title and labels
-# TeX symbols \mu and \sigma require double escapes inside the string.
-plt.title(
-    f"Histogram of Normally Distributed Data Points (n={n_distrib_values}, "
-    f"$\\mu$={distrib_mean}, $\\sigma$={distrib_stddev})\n "
-    f"and plot of $y=x^{index}$"
-    )
-
-plt.xlabel("X value")
-plt.ylabel(f"Frequency of value \\ $x^{index}$")
-plt.legend()
 
 # set x-axis ticks be integer values that range from the lowest value in 
 # either plot, to the highest value in either plot.
 x_axis_minimum = min(lowest_bin_centre, round(cubic_range_min)-1)
 x_axis_maximum = max(highest_bin_centre, round(cubic_range_max)+1)
 plt.xticks(range(x_axis_minimum, x_axis_maximum, 1))
+
+
+# Add main title and legend
+# Use figure object to title and legenf the entire plot (both Axes)
+# TeX symbols \mu and \sigma require double escapes inside the string.
+fig.suptitle(
+    f"Histogram of Normally Distributed Data Points (n={n_distrib_values}, "
+    f"$\\mu$={distrib_mean}, $\\sigma$={distrib_stddev})\n "
+    f"and plot of $h(x)=x^{index}$"
+    )
+
+fig.legend(
+    loc="upper left", bbox_to_anchor=(0,1), bbox_transform=ax1.transAxes
+    )
+
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
 
 # Print to file
 plt.savefig('histogram_and_cube_function.png')

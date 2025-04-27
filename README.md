@@ -56,19 +56,50 @@ LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdo
 
 ---------------------------------------------------------------
 ## Week 07 Task: es.py
-**Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these are two files with separate histories.**
+**Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these as two files with separate histories.**
 >Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
 >The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
 >Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
 
-Additions: I added an option to specify a different character to be counted on the command-line, 
-as `$ python es.py <FILE.TXT> <optional letter>`
+### Additional features 
+- I added an option to specify a different character to be counted on the command-line, 
+as `$ python es.py <FILE.TXT> <optional letter>`. Only a one-character argument will be accepted.
+- This program will count both lowercase and uppercase instances of e (or any othey letter specified.)
 
 ### Expected Output
 ```
+# Calling this program with a valid text file
 $ python es.py pride_and_prejudice.txt
 > filename is pride_and_prejudice.txt
 > Finished - there are 74451 instance(s) of the letter e in the file pride_and_prejudice.txt 
+
+# Calling this program with a valid text file and specifying a single character to count
+$ python es.py pride_and_prejudice.txt t
+> filename is pride_and_prejudice.txt
+> Finished - there are 50837 instance(s) of the letter t in the file pride_and_prejudice.txt 
+
+# Calling this program with a valid text file and specifying multiple letters to count
+$ python es.py pride_and_prejudice.txt xyzzy
+> filename is pride_and_prejudice.txt
+> This program can only count single letters, and you asked it to count xyzzy. 
+> Goodbye.
+
+# Calling this program with no file specified prints help information
+$ python es.py
+> This is a program to count the instances of the letter 'e' in a text file. 
+> You may choose a different letter to count by specifying it on the command line.
+> This program should be called as: $ python es.py <FILE.TXT> <optional letter>
+
+# Calling this program with a file that does not exist prints a relevant text message
+$ pythom es.py file_not_existing.txt
+> filename is file_not_existing.txt
+> Error! The file file_not_existing.txt does not exist.
+
+# Calling this program with a file that is not a text file prints a relevant text message
+$ python es.py testbin.bin
+> filename is testbin.bin
+> Error! The file testbin.bin is not a text file.
+
 ```
 
 ### Research and Sources
@@ -78,9 +109,9 @@ Tutorial on passing command-line arguments to a Python program: https://www.tuto
 Terminating a program (sys.exit()): https://stackoverflow.com/questions/73663/how-do-i-terminate-a-script
 
 Error handling: I found the correct names of exceptions for this program by trial and error. 
-- importing a module that had not been installed threw a ModuleNotFoundError.
-- passing a filename for which the file does not exist threw a FileNotFoundError.
-- attempting to open a binary file as a text file threw a UnicodeDecodeError.  
+- importing a module that had not been installed throws a `ModuleNotFoundError`.
+- passing a filename for which the file does not exist throws a `FileNotFoundError`.
+- attempting to open a binary file as a text file throws a `UnicodeDecodeError`.  
 
 Error Handling Sources:  
 W3schools on try/except/else/finally: https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0   
@@ -95,27 +126,34 @@ W3schools list of Python built-in exceptions: https://www.w3schools.com/python/p
 >Some marks will be given for making the plot look nice (legend etc).
 >Please put a copy of the image of the plot (.png file) into the repository
 
-### Using numpy.random.Generator().normal
+### Additional features
+I dynamcally set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
+
+### Expected Output
+This program generates a PNG image showing the requested histogram and cube function.
+![](histogram_and_cube_function.png)
+
+### Research performed for this task
+***Using numpy.random.Generator().normal***  
 The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
 The method to generate the normally-distributed datapoints for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
 
-### Superscript on plot axis labels:
+***Superscript on plot axis labels***   
 I wanted to display x^3 as x³ in my plot title and labels.  
 A [GeeksForGeeks post](https://www.geeksforgeeks.org/how-to-print-superscript-and-subscript-in-python/) offered a way to insert Unicode directly into an f-string. This would work if I was using a fixed power of x, but I am using the variable 'index' to represent the power and I would like the plot title to change dynamically if this variable changes. 
 The MathPlotLib documentation states that MathPlotLib supports a subset of TeX markup called [MathText](https://matplotlib.org/stable/users/explain/text/mathtext.html), so I can use that to apply superscript formatting to the variable value in my chart title.  
-With index=3, `title="plot of $y=x^{index}$"`  renders the title as: plot of $y=x^3$
+With index=3, `title="plot of $y=x^{index}$"`  renders as: plot of $y=x^3$
 
 Note that I haven't had to use curly braces in the TeX expression itself; if I did, I would have to double-brace to avoid Python interpreting them as f-string variables. Through trial-and-error, I find that:  
-With index=3, `title="plot of $y=x^{{5+{index}}}$"` renders the title as: plot of $y=x^{5+3}$
+With index=3, `title="plot of $y=x^{{5+{index}}}$"` renders as: plot of $y=x^{5+3}$
 
-
-### Superscript in markdown:
+***Superscript in markdown***  
 I then had to research a way to insert x³ this README.md file!  
 Pure markdown does not have a superscript or subscript syntax.   
 This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscript-in-markdown-github-flavored) suggested some other solutions: 
-1. Embedding HTML tags: `x<sup>3</sup>` displays as x<sup>3</sup> 
-2.  Embedded LaTeX: `$x^{3}$`  displays as $x^{3}$ 
-3.  Directly typing x³ works, and leaves the raw Markdown file more readable.
+1. Embedded HTML tags: `x<sup>3</sup>` displays as x<sup>3</sup> 
+2. Embedded LaTeX: `$x^{3}$`  displays as $x^{3}$ 
+3. Directly typing x³ as Unicode works, and leaves the raw Markdown file more readable.
 
 ----------------------------------------------------------
 # General Research / Reading / Notes
@@ -125,7 +163,7 @@ The [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/) o
 - "Limit all lines to a maximum of 79 characters." (avoids the default wrapping in most tools)
 - "Function names should be lowercase, with words separated by underscores as necessary to improve readability." 
 
-### Other reading on this topic:
+### Other reading on this topic
 [Python Morsels: Breaking up long lines of code in Python](https://www.pythonmorsels.com/breaking-long-lines-code-python/)  
 [GeeksForGeeks: Python – Multi-Line Statements](https://www.geeksforgeeks.org/python-multi-line-statements/)
 

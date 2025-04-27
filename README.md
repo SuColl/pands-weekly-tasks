@@ -127,18 +127,24 @@ W3schools list of Python built-in exceptions: https://www.w3schools.com/python/p
 >Please put a copy of the image of the plot (.png file) into the repository
 
 ### Additional features
-I dynamcally set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
+- I dynamcally set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
+- Added secondary y-axis for the cubic function. As the max value of the histogram is approx. 200 and the value of the cubic funcion is 1000 at x-10, they do not display well on the same vertical scale. 
 
 ### Expected Output
 This program generates a PNG image showing the requested histogram and cube function.
 ![](histogram_and_cube_function.png)
 
 ### Research performed for this task
-***Using numpy.random.Generator().normal***  
+**Using numpy.random.Generator().normal**  
 The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
 The method to generate the normally-distributed datapoints for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
 
-***Superscript on plot axis labels***   
+**Plotting a second function on the same plot using a secondary y-axis**  
+I followed this worked example, which let me create a twinned second Axes for the plot:
+[MatPlotLib.org:Plots with different scales](https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html)  
+Plotting a combined legend for both functions required calling `figure.legend()` ([documented here](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.legend.html)), and using a `bbox_to_anchor` parameter to position the legend properly (method taken from [StackOverflow comment](https://stackoverflow.com/a/47370214))
+
+**Superscript on plot axis labels**   
 I wanted to display x^3 as x³ in my plot title and labels.  
 A [GeeksForGeeks post](https://www.geeksforgeeks.org/how-to-print-superscript-and-subscript-in-python/) offered a way to insert Unicode directly into an f-string. This would work if I was using a fixed power of x, but I am using the variable 'index' to represent the power and I would like the plot title to change dynamically if this variable changes. 
 The MathPlotLib documentation states that MathPlotLib supports a subset of TeX markup called [MathText](https://matplotlib.org/stable/users/explain/text/mathtext.html), so I can use that to apply superscript formatting to the variable value in my chart title.  
@@ -147,7 +153,7 @@ With index=3, `title="plot of $y=x^{index}$"`  renders as: plot of $y=x^3$
 Note that I haven't had to use curly braces in the TeX expression itself; if I did, I would have to double-brace to avoid Python interpreting them as f-string variables. Through trial-and-error, I find that:  
 With index=3, `title="plot of $y=x^{{5+{index}}}$"` renders as: plot of $y=x^{5+3}$
 
-***Superscript in markdown***  
+**Superscript in markdown**  
 I then had to research a way to insert x³ this README.md file!  
 Pure markdown does not have a superscript or subscript syntax.   
 This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscript-in-markdown-github-flavored) suggested some other solutions: 

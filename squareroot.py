@@ -1,32 +1,40 @@
-# program that takes a positive floating-point number as input and outputs an approximation of its square root.
-# This program uses a custom function to calculate the square root, as an exercise.
+# program that takes a positive floating-point number as input and outputs 
+# an approximation of its square root.
+# This program uses a custom function to calculate the square root, 
+# as an exercise.
 
 # author: Susan Collins
 
 # v01: rough layout of program flow
 # v02: added initial version of sqrt calculation
-# v03: added tolerance parameter to sqrt() to tell the square root calculation loop when to stop. 
+# v03: added tolerance parameter to sqrt() to tell the square root 
+# calculation loop when to stop. 
 
 
 # custom sqrt function, currently prints results at each step
 def sqrt(input, tolerance = 0):
-    # The tolerance parameter tells the fuction how close the final guess must be to the true root
+    # The tolerance parameter tells the fuction how close the final 
+    # guess must be to the true root
     print(f"you called the sqrt function for {input}")
 
-    # if the tolerance parameter is 0, set it to be 0.001% of the input number
+    # if the user enters a tolerance parameter of 0, the loop may never end. 
+    # Therefore, in this case set tolerance to be 0.001% of the input number.
     if tolerance == 0:
         tolerance = input * 0.00001
 
-    # choose a starting guess for the square root - roughly guessing one-tenth
+    # choose a starting guess for the square root - roughly guessing 
+    # one-tenth of the input number
     guess = input * 0.1
     difference = abs(input - (guess * guess))
     print(guess, difference, tolerance)
 
-    # loop over the Newtonian iteration until the difference between the guess and the real root is less than the tolerance
+    # loop over the Newtonian iteration until the difference between the 
+    # guess and the real root is less than the tolerance
     while difference > tolerance:
         # see README for mathematical equation
         guess = 0.5 * (guess + (input / guess)) 
 
+        # get difference between current root guess squared amd input number
         difference = abs(input - (guess * guess))
 
         print(guess, difference, tolerance)

@@ -12,6 +12,15 @@ A collection of submitted exercises for the Programming and Scriping Module, par
 - [DateTime](https://docs.python.org/3/library/datetime.html)
 
 ----------------------------------------------------------------------
+## Week 01 Task: helloworld.py
+This program prints "Hello, World!" to the terminal.
+### Expected Output
+```
+$ python helloworld.py
+> Hello World!
+```
+
+----------------------------------------------------------------------
 ## Week 02 Task: bank.py
 This program prompts the user to input two money amounts (in cent.) The program will then:
 1. Add the two amounts
@@ -46,8 +55,8 @@ print(f"(Method 1): The sum of these is €{wholeEuro}.{remainingCent:02d}")
 ```
 
 ### Research and Sources
-On the None type: [GeeksForGeeks](https://www.geeksforgeeks.org/declare-variable-without-value-python/)
-Floor divisions: [StackOverflow](https://stackoverflow.com/questions/37283786/floor-division-with-negative-number)
+On the None type: [GeeksForGeeks](https://www.geeksforgeeks.org/declare-variable-without-value-python/)  
+Floor division discussion: [StackOverflow](https://stackoverflow.com/questions/37283786/floor-division-with-negative-number)
 
 ----------------------------------------------------------------------
 ## Week 03 Task: accounts.py

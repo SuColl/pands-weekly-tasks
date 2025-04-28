@@ -15,7 +15,7 @@
 def sqrt(input, tolerance = 0):
     # The tolerance parameter tells the function how close the final 
     # guess must be to the true root
-    print(f"you called the sqrt function for {input}")
+    print(f"You called the sqrt function for {input}")
 
     # if the user enters a tolerance parameter of 0, the loop may never end. 
     # Therefore, in this case set tolerance to be 0.001% of the input number.
@@ -44,25 +44,34 @@ def sqrt(input, tolerance = 0):
     return(guess)
 
 
+# Function to read in and validate user input
+def read_in_positive_float():
+    # initialise number variable as NoneType
+    number = None
+
+    while number == None:
+        try: 
+            number = float(
+                input("Please enter a positive floating-point number: ")
+                )
+
+        # ValueError if input is blank or a non-mumeric string
+        except ValueError:
+            print("That was not a floating-point number.")
+
+        # if input is negative, reset number to None and try again
+        else:
+            if number < 0:
+                print("That's a negative number.")
+                number = None
+
+    # Return the positive number. Cast to float in case it it int.
+    return(float(number))
+
+
 ### Main code block ###
-number = None
-
-while number == None:
-    try: 
-        number = float(
-            input("Please enter a positive floating-point number: ")
-            )
-
-    # ValueError if input is blank or a non-mumeric string
-    except ValueError:
-        print("That was not a floating-point number.")
-
-    # if input is negative, reset number variable and try again
-    else:
-        if number < 0:
-            print("That's a negative number.")
-            number = None
-
+# read in input number from user
+number = read_in_positive_float()
 
 # calling the custom sqrt function with no tolerance specified
 answer = sqrt(number)

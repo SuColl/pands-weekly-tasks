@@ -9,6 +9,7 @@
 # v02: added initial version of sqrt calculation
 # v03: added tolerance parameter to sqrt() to tell the square root 
 # calculation loop when to stop. 
+# v04: moved input to read_in_positive_float() and added input checks. 
 
 
 # custom sqrt function, currently prints results at each step
@@ -18,15 +19,15 @@ def sqrt(input, tolerance = 0):
     print(f"You called the sqrt function for {input}")
 
     # if the user enters a tolerance parameter of 0, the loop may never end. 
-    # Therefore, in this case set tolerance to be 0.001% of the input number.
+    # Therefore, in this case set tolerance to be 0.00001% of the input 
+    # number.
     if tolerance == 0:
-        tolerance = input * 0.00001
+        tolerance = input * 0.0000001
 
     # choose a starting guess for the square root - roughly guessing 
     # one-tenth of the input number
     guess = input * 0.1
     difference = abs(input - (guess * guess))
-    print(guess, difference, tolerance)
 
     # loop over the Newtonian iteration until the difference between the 
     # guess and the real root is less than the tolerance
@@ -37,16 +38,13 @@ def sqrt(input, tolerance = 0):
         # get difference between current root guess squared amd input number
         difference = abs(input - (guess * guess))
 
-        print(guess, difference, tolerance)
-
-
     # return the final guess
     return(guess)
 
 
-# Function to read in and validate user input
+# Function to read in and validate positive float from user
 def read_in_positive_float():
-    # initialise number variable as NoneType
+    # initialise input variable as NoneType
     number = None
 
     while number == None:
@@ -65,8 +63,8 @@ def read_in_positive_float():
                 print("That's a negative number.")
                 number = None
 
-    # Return the positive number. Cast to float in case it it int.
-    return(float(number))
+    # Return the positive float.
+    return(number)
 
 
 ### Main code block ###
@@ -76,5 +74,5 @@ number = read_in_positive_float()
 # calling the custom sqrt function with no tolerance specified
 answer = sqrt(number)
 
-# print result
-print(f"The square root of {number} is {answer}")
+# print result, rounded to 3 decimal places
+print(f"The square root of {number} is {answer:.3f}")

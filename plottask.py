@@ -10,16 +10,20 @@
 try:
     import numpy as np
 except ModuleNotFoundError:
-    print("This program requires the module 'NumPy'.\n"
-        "Please install this module and try again. \nGoodbye.")
+    print(
+        "This program requires the module 'NumPy'.\n"
+        "Please install this module and try again. \nGoodbye."
+    )
     exit()
 
 # import the MatPlotLib.PyPlot library for plotting
 try:
     import matplotlib.pyplot as plt
 except ModuleNotFoundError:
-    print("This program requires the module 'MatPlotLib'.\n"
-        "Please install this module and try again. \nGoodbye.")
+    print(
+        "This program requires the module 'MatPlotLib'.\n"
+        "Please install this module and try again. \nGoodbye."
+    )
     exit()
 
 
@@ -104,11 +108,11 @@ fig.suptitle(
     f"Histogram of Normally Distributed Data Points (n={n_distrib_values}, "
     f"$\\mu$={distrib_mean}, $\\sigma$={distrib_stddev})\n "
     f"and plot of $h(x)=x^{index}$"
-    )
+)
 
 fig.legend(
-    loc="upper left", bbox_to_anchor=(0,1), bbox_transform=ax1.transAxes
-    )
+    loc="upper left", bbox_to_anchor=(0, 1), bbox_transform=ax1.transAxes
+)
 
 fig.tight_layout()  # otherwise the right y-label is slightly clipped
 

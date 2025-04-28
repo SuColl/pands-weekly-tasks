@@ -154,35 +154,55 @@ lovely deep blogpost about datetime: [Towards Data Science: Time Travel Made Eas
 ----------------------------------------------------------------------
 ## Week 06 Task: squareroot.py
 This program takes a positive floating-point number as input and outputs an approximation of its square root, using a custom sqrt() function, as an exercise in creating functions. 
+
+### Expected Output 
+```
+$ python squareroot.py
+Please enter a positive floating-point number: eggs
+That was not a floating-point number.
+Please enter a positive floating-point number: -22.4
+That's a negative number.
+Please enter a positive floating-point number: 4.16
+You called the sqrt function for 4.16
+The square root of 4.16 is 2.040
+```
+
+### Notes on my approach
+- The input function rejects non-numeric and negative input.
 - The custom sqrt() function uses Newton's method of finding square roots. This is an iterative process where each step gives a result that is closer to the true answer. Given a positive number $a$, for which you want to find the square root, and given a starting approximate value of the root $x_n$, the iteration is given by:
 
 $$
 x_{n+1}= \frac{1}{2} \left({x_n + \frac{a}{x_n}}\right)
 $$
 
- - Stopping the loop: Initially I ran the interation loop 100 times, but this is often unnecessary. Ideally I would like the loop to stop when it has found the correct answer, but because the comparison of floats can be inexact, the loop may not ever stop. So, I added a parameter to the sqrt() function that indicates how close to the true answer the calculated answer must be to be considered 'correct' and end the loop. 
+- I use a starting guess of 10% of the float whose root we are looking for.
 
-- considerations: how to get the start value?
+ - Stopping the loop: Initially I hard-coded the loop to run the above equation 100 times, but this is often unnecessary. Ideally I would like the loop to stop when it has found the correct answer, but because the comparison of floats can be inexact, the loop may not ever stop. So, I added a tolerance parameter to the sqrt() function that indicates how close to the true answer the calculated answer must be to be considered 'correct' and end the loop. (The custom `sqrt()` function in this program can accept a different tolerance parameter at the time of calling, but I do not use that functionality in the main body of this program.)
 
 ### Research and Sources
 
-Comparing Floats: https://www.geeksforgeeks.org/comparing-floating-points-number-for-almost-equality-in-python/
+On the inherent imprecision of comparing floats: [GeeksForGeeks: Comparing Floating Points Number for Almost-Equality in Python](https://www.geeksforgeeks.org/comparing-floating-points-number-for-almost-equality-in-python/)
 
-Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
+Newton's method: [Wikipedia: Use of Newton's method to compute square roots](https://en.wikipedia.org/wiki/Newton%27s_method#Examples)
 
-LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
+LaTeX in Markdown formatting references: [VisualStudio.com: Markdown and Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown)
+and [upyesp Blog: Cheat Sheet: Adding Math Notation to Markdown](https://www.upyesp.org/posts/makrdown-vscode-math-notation/)
 
 ----------------------------------------------------------------------
 ## Week 07 Task: count_es.py and es.py
 **Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these as two files with separate histories.**
->Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
->The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  
->Marks will be given for dealing with errors eg no argument, filename that does not exist, or is not a text file.
+
+This program reads in a text file and outputs the number of e's it contains. The filename is supplied as an argument on the command line.   
+This program will alert if the specified file does not exist or the file is not a text file.
+This program will print help text if there is no filename specified.
+
+### Module used
+[Sys](https://docs.python.org/3/library/sys.html)
 
 ### Additional features 
 - I added an option to specify a different character to be counted on the command-line, 
 as `$ python es.py <FILE.TXT> <optional letter>`. Only a one-character argument will be accepted.
-- This program will count both lowercase and uppercase instances of e (or any othey letter specified.)
+- This program will count both lowercase and uppercase instances of e (or any othey letter specified) and provide the combined total.
 
 ### Expected Output
 ```
@@ -220,20 +240,24 @@ Error! The file testbin.bin is not a text file.
 
 ```
 
-### Research and Sources
-Txt files for development were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
-
-Tutorial on passing command-line arguments to a Python program: https://www.tutorialspoint.com/python/python_command_line_arguments.htm  
-Terminating a program (sys.exit()): https://stackoverflow.com/questions/73663/how-do-i-terminate-a-script
-
+### Notes on my approach
 Error handling: I found the correct names of exceptions for this program by trial and error. 
 - importing a module that had not been installed throws a `ModuleNotFoundError`.
 - passing a filename for which the file does not exist throws a `FileNotFoundError`.
 - attempting to open a binary file as a text file throws a `UnicodeDecodeError`.  
 
+### Research and Sources
+Txt files for development were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
+
+Tutorial on passing command-line arguments to a Python program: [tutorialspoint.com: Python - Command-Line Arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)
+
+Terminating a program (sys.exit()): [StackOverflow: How do I terminate a script?](https://stackoverflow.com/a/73673)
+
 Error Handling Sources:  
-W3schools on try/except/else/finally: https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0   
-W3schools list of Python built-in exceptions: https://www.w3schools.com/python/python_ref_exceptions.asp   
+
+W3schools on try/except/else/finally: [W3Schools: Python Try Except](https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0)
+
+W3schools list of Python built-in exceptions: [W3Schools:Python Built-in Exceptions](https://www.w3schools.com/python/python_ref_exceptions.asp)
 
 ----------------------------------------------------------------------
 ## Week 08 Task: plottask.py

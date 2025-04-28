@@ -17,7 +17,7 @@ This program prints "Hello, World!" to the terminal.
 ### Expected Output
 ```
 $ python helloworld.py
-> Hello World!
+Hello World!
 ```
 
 ----------------------------------------------------------------------
@@ -29,13 +29,13 @@ This program prompts the user to input two money amounts (in cent.) The program 
 ### Expected Output
 ```
 $ python bank.py
-> Enter the first amount (cent):jdfnlsdnf
-> That is not a valid amount of cent.
-> Enter the first amount (cent):2222.444
-> That is not a valid amount of cent.
-> Enter the first amount (cent):5023
-> Enter the second amount (cent):-456
-> The sum of these is €45.67
+Enter the first amount (cent):jdfnlsdnf
+That is not a valid amount of cent.
+Enter the first amount (cent):2222.444
+That is not a valid amount of cent.
+Enter the first amount (cent):5023
+Enter the second amount (cent):-456
+The sum of these is €45.67
 ```
 
 ### Notes on my approach
@@ -61,7 +61,25 @@ Floor division discussion: [StackOverflow](https://stackoverflow.com/questions/3
 ----------------------------------------------------------------------
 ## Week 03 Task: accounts.py
 This program reads in an alpha-numeric account number, and outputs the account number with only the last 4 digits showing (and the preceding digits replaced with Xs).
-- If the account number has 4 digits or fewer, it is output without obfuscation.
+
+If the account number has 4 digits or fewer, it is output without obfuscation.
+
+### Expected Output
+```
+$ python accounts.py
+Please enter an account number: 
+You entered nothing. Try again.
+Please enter an account number: 45362*! 
+Please only enter alphanumeric characters (Aa-Zz, 0-9)
+Please enter an account number: Abcde324552jkl
+XXXXXXXXXX2jkl
+```
+
+### Notes on my approach
+I assume that the input account number should be alphanumeric, i.e. no special characters like %*^&. I use the string method `isalnum()` to check this. 
+
+### Research and Sources
+Check if string is alphanumeric: [W3Schools](https://www.w3schools.com/python/ref_string_isalnum.asp)
 
 ----------------------------------------------------------------------
 ## Week 04 Task: collatz.py
@@ -121,35 +139,35 @@ as `$ python es.py <FILE.TXT> <optional letter>`. Only a one-character argument 
 ```
 # Calling this program with a valid text file
 $ python es.py pride_and_prejudice.txt
-> filename is pride_and_prejudice.txt
-> Finished - there are 74451 instance(s) of the letter e in the file pride_and_prejudice.txt 
+filename is pride_and_prejudice.txt
+Finished - there are 74451 instance(s) of the letter e in the file pride_and_prejudice.txt 
 
 # Calling this program with a valid text file and specifying a single character to count
 $ python es.py pride_and_prejudice.txt t
-> filename is pride_and_prejudice.txt
-> Finished - there are 50837 instance(s) of the letter t in the file pride_and_prejudice.txt 
+filename is pride_and_prejudice.txt
+Finished - there are 50837 instance(s) of the letter t in the file pride_and_prejudice.txt 
 
 # Calling this program with a valid text file and specifying multiple letters to count
 $ python es.py pride_and_prejudice.txt xyzzy
-> filename is pride_and_prejudice.txt
-> This program can only count single letters, and you asked it to count xyzzy. 
-> Goodbye.
+filename is pride_and_prejudice.txt
+This program can only count single letters, and you asked it to count xyzzy. 
+Goodbye.
 
 # Calling this program with no file specified prints help information
 $ python es.py
-> This is a program to count the instances of the letter 'e' in a text file. 
-> You may choose a different letter to count by specifying it on the command line.
-> This program should be called as: $ python es.py <FILE.TXT> <optional letter>
+This is a program to count the instances of the letter 'e' in a text file. 
+You may choose a different letter to count by specifying it on the command line.
+This program should be called as: $ python es.py <FILE.TXT> <optional letter>
 
 # Calling this program with a file that does not exist prints a relevant text message
 $ pythom es.py file_not_existing.txt
-> filename is file_not_existing.txt
-> Error! The file file_not_existing.txt does not exist.
+filename is file_not_existing.txt
+Error! The file file_not_existing.txt does not exist.
 
 # Calling this program with a file that is not a text file prints a relevant text message
 $ python es.py testbin.bin
-> filename is testbin.bin
-> Error! The file testbin.bin is not a text file.
+filename is testbin.bin
+Error! The file testbin.bin is not a text file.
 
 ```
 

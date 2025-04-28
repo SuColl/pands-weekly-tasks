@@ -1,5 +1,11 @@
 # colllatz.py
-# This program asks the user to input any positive integer, then repeats two simple arithmetic operations on this number, after the manner of the Collatz conjecture. If the number is even it is divided by two, if it is odd it is multiplied by three and 1 is added. The program ends if/when the current value reaches 1. 
+# This program asks the user to input any positive integer, then repeats 
+# two simple arithmetic operations on this number, after the manner of the 
+# Collatz conjecture. 
+# If the number is even it is divided by two, if it is odd it is multiplied 
+# by three and 1 is added. 
+
+# The program ends if/when the current value reaches 1. 
 # author: Susan Collins
 
 # Create boolean to flag the validity of the input number
@@ -36,13 +42,17 @@ while valid == False:
         valid = True
 
 
-# cast number as int. I waited to do this until after the input was verified, to avoid a ValueError.
+# cast number as int. I waited to do this until after the input was verified, 
+# to avoid a ValueError.
 number = int(number)
 
-# print out the first number, without newlines (as specified in the weekly task description)
+# print out the first number, without newlines (as specified in the weekly 
+# task description)
 print(number, end=" ")
 
-# perform the Collatz operations, depending on whether the number is odd or even at the end of each step. Continue until the number equals 1.
+# perform the Collatz operations, depending on whether the number is odd 
+# or even at the end of each step. 
+# Continue until the number equals 1.
 while number != 1:
     # if even
     if (number % 2) == 0:
@@ -57,10 +67,10 @@ while number != 1:
 
 
 # Notes:
-# In theory, this programme could run endlessly, if the input integer is one for which the Collatz sequence does not end. The existence of such an integer has not yet been proven.
-# I used several if/elif/else statements to try and check the validity of the input integer and avoid the program stopping due to errors. There are probably better ways to handle errors / exceptions, but I don't know them yet. 
-
-# Sources consulted:
-# Blog post on choosing between isdigit(), isnumeric(), isdecimal(), which reminded me to strip whitespace from the input: https://miguendes.me/python-isdigit-isnumeric-isdecimal
-# Follow-up reading on w3schools: https://www.w3schools.com/python/ref_string_isdecimal.asp, https://www.w3schools.com/python/ref_string_isdigit.asp, https://www.w3schools.com/python/ref_string_isnumeric.asp
-# Handy method of slicing the negative sign off a negative integer, and using isdigit() to validate the rest, mentioned on stackoverflow: "How do I check if a string is a negative number before passing it through int()?" https://stackoverflow.com/a/78912188
+# In theory, this programme could run endlessly, if the input integer is 
+# one for which the Collatz sequence does not end. The existence of such an 
+# integer has not yet been proven.
+# I used several if/elif/else statements to try and check the validity of 
+# the input integer and avoid the program stopping due to errors. 
+# There are probably better ways to handle errors / exceptions, but I don't 
+# know them yet. 

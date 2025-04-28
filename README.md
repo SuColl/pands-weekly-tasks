@@ -40,8 +40,10 @@ The sum of these is €45.67
 ```
 
 ### Notes on my approach
-- I initialise the input variables as None so that once they have a value assigned, the expression `var == None` always evaluates as False. 
-If they were initialised as booleas False, then with an input integer of 0 the expression `var == False` would evaluate as True.
+- The program checks that the inputs are integers. Negative integers are permitted.
+
+- I initialise the input variables as None so that once they have a value assigned, the expression `var == None` will always evaluate as False. 
+If the input variables were initialised as boolean False, then with an input integer of 0 the expression `var == False` would evaluate as True.
 
 - My initial method for calculating the Euro amount produced an inaccurate result if the sum of the inputs was negative, due to the floor operator rounding down. My final code uses another method.
 
@@ -78,7 +80,9 @@ XXXXXXXXXX2jkl
 ```
 
 ### Notes on my approach
-I assume that the input account number should be alphanumeric, i.e. no special characters like %*^&. I use the string method `isalnum()` to check this. 
+- The account number can contain both numbers and letters, but not spaces.
+- The program rejects user input if it is an empty string.
+- I assume that the input account number should be alphanumeric, i.e. no special characters like %*^&. I use the string method `isalnum()` to check this, and reject input that contains special characters.
 
 ### Research and Sources
 Check if string is alphanumeric: [W3Schools: Python String isalnum() Method](https://www.w3schools.com/python/ref_string_isalnum.asp)
@@ -111,8 +115,8 @@ For this program, as input error-checking I use a series of if/elif/else stateme
 - `number[0]=="-" and number[1:].isdigit())` evaluates True if the input is a negative integer
 - `not number.isdigit()` evaluates True if the input is a float or a non-numeric string
 
-Only once all these checks were passed do I cast the input as an integer, to avoid a ValueError. 
-I wrote this if/elif/else approach before I had learned to use the try/except blocks, and I have left it here in this program as it is perfectly functional for this program, and I may want to use these evaluations again. 
+Only once all these checks are passed do I cast the input as an integer, to avoid a ValueError. 
+I wrote this if/elif/else approach before I had learned to use the try/except blocks, and I have left it here as it is perfectly functional for this program, and I may want to use these evaluations again. 
 
 ### Research and Sources
 Blog post on using isdigit() vs isnumeric() vs isdecimal(), which also reminded me to strip whitespace from the input: [miguendes.me: How to Choose Between isdigit(), isdecimal() and isnumeric() in Python](https://miguendes.me/python-isdigit-isnumeric-isdecimal)
@@ -126,7 +130,7 @@ Handy method of slicing the negative sign off a negative integer, and using isdi
 ## Week 05 Task: weekday.py
 This program outputs whether or not today (at the time of running) is a weekday. There is no user input.
 
-### Module used
+### Module required
 [DateTime](https://docs.python.org/3/library/datetime.html)
 
 ### Expected Output if called on Monday through Friday:
@@ -175,9 +179,9 @@ $$
 x_{n+1}= \frac{1}{2} \left({x_n + \frac{a}{x_n}}\right)
 $$
 
-- I use a starting guess of 10% of the float whose root we are looking for.
+- I use a value of 10% of the input float as a starting guess for the square root
 
- - Stopping the loop: Initially I hard-coded the loop to run the above equation 100 times, but this is often unnecessary. Ideally I would like the loop to stop when it has found the correct answer, but because the comparison of floats can be inexact, the loop may not ever stop. So, I added a tolerance parameter to the sqrt() function that indicates how close to the true answer the calculated answer must be to be considered 'correct' and end the loop. (The custom `sqrt()` function in this program can accept a different tolerance parameter at the time of calling, but I do not use that functionality in the main body of this program.)
+- Stopping the loop: Initially I hard-coded the loop to run the above equation 100 times, but this is often unnecessary. Ideally I would like the loop to stop when it has found the correct answer, but because the comparison of floats can be inexact, the loop may not ever stop. So, I added a tolerance parameter to the `sqrt()` function that indicates how close to the true answer the calculated answer must be to be considered 'correct' and end the loop. (The custom `sqrt()` function in this program can accept a different tolerance parameter at the time of calling, but I do not use that functionality in the main body of this program.)
 
 ### Research and Sources
 
@@ -196,7 +200,7 @@ This program reads in a text file and outputs the number of e's it contains. The
 This program will alert if the specified file does not exist or the file is not a text file.
 This program will print help text if there is no filename specified.
 
-### Module used
+### Module required
 [Sys](https://docs.python.org/3/library/sys.html)
 
 ### Additional features 
@@ -243,34 +247,36 @@ Error! The file testbin.bin is not a text file.
 ### Notes on my approach
 Error handling: I found the correct names of exceptions for this program by trial and error. 
 - importing a module that had not been installed throws a `ModuleNotFoundError`.
-- passing a filename for which the file does not exist throws a `FileNotFoundError`.
+- trying to open a file which does not exist throws a `FileNotFoundError`.
 - attempting to open a binary file as a text file throws a `UnicodeDecodeError`.  
 
 ### Research and Sources
-Txt files for development were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
+Txt files for development and testing were downloaded from [Project Gutenberg](www.gutenberg.org), these text files have been added to `.gitignore` so they will not be pushed to GitHub.
 
 Tutorial on passing command-line arguments to a Python program: [tutorialspoint.com: Python - Command-Line Arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)
 
 Terminating a program (sys.exit()): [StackOverflow: How do I terminate a script?](https://stackoverflow.com/a/73673)
 
-Error Handling Sources:  
-
-W3schools on try/except/else/finally: [W3Schools: Python Try Except](https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0)
+Error Handling: W3schools on try/except/else/finally: [W3Schools: Python Try Except](https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0)
 
 W3schools list of Python built-in exceptions: [W3Schools:Python Built-in Exceptions](https://www.w3schools.com/python/python_ref_exceptions.asp)
 
 ----------------------------------------------------------------------
 ## Week 08 Task: plottask.py
->Instructions: Write a program called plottask.py that displays:
->    a histogram of a normal distribution of a 1000 values with a mean of 5 and standard deviation of 2, 
->   and a plot of the function  h(x)=x3 in the range 0 to 10, 
->on the one set of axes.
->Some marks will be given for making the plot look nice (legend etc).
->Please put a copy of the image of the plot (.png file) into the repository
+This program creates a plot that displays:
+- a histogram of a normal distribution of 1000 values with a mean of 5 and standard deviation of 2, 
+- the function  h(x)=x³ in the range 0 to 10,   
+
+on one set of axes.
+A copy of the image of the plot (histogram_and_cube_function.png) is also in the repository.
+
+### Modules required
+- [NumPy](https://numpy.org)
+- [MatPlotLib](https://matplotlib.org/) 
 
 ### Additional features
 - I dynamically set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
-- Added secondary y-axis for the cubic function. As the maximum value of the histogram is approximately 200, and the value of the cubic function is 1000 at x=10, they do not display well on the same vertical scale. 
+- I added a secondary y-axis for the cubic function. As the maximum value of the histogram is approximately 200, and the value of the cubic function is 1000 at x=10, they do not display well on the same vertical scale. 
 
 ### Expected Output
 This program generates a PNG image showing the requested histogram and cube function.
@@ -279,7 +285,7 @@ This program generates a PNG image showing the requested histogram and cube func
 ### Research and Sources
 **Using numpy.random.Generator().normal**  
 The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
-The method to generate the normally-distributed datapoints for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
+The method to generate the normally-distributed data points for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
 
 **Plotting a second function on the same plot using a secondary y-axis**  
 I followed this worked example, which let me create a twinned second Axes for the plot:
@@ -319,22 +325,22 @@ The [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/) o
 I have not consistently used any particular git commit message convention in these weekly tasks, but I am slowly starting to incorporate the advice from the sources below. 
 
 There are many, _many_ articles and blog posts on what comprises a 'good' Git commit message. Some I have read:
- - [freeCodeCamp(2019): How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
- - [Kelvin Romero @Medium(2023): Writing good commit messages](https://kelvinromero.medium.com/writing-good-commit-messages-527679b1babb)
- - [Hashnode(2019): Which commit message convention do you use at work?](https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g)
- - [Tim Pope(2008): A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+- [freeCodeCamp(2019): How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
+- [Kelvin Romero @Medium(2023): Writing good commit messages](https://kelvinromero.medium.com/writing-good-commit-messages-527679b1babb)
+- [Hashnode(2019): Which commit message convention do you use at work?](https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g)
+- [Tim Pope(2008): A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 
 Common advice from these writers include:
- - separate subject line (concise, approx 50 characters) and optional body text (longer description)
- - ["Atomic Commits"](https://sparkbox.com/foundry/atomic_commits_with_git), i.e. each commit represents one small, complete, independent chunk of work. This chunk should be large enough to contain a complete change, ideally with the codebase working both before and after the change, and also small enough that it can be described/understood easily and it represents only one change. If multiple changes are represented in one commit, it would be more difficult to track the history of the changes or their separate effects on the code. 
-  - Using the imperative tense of verbs. This convention seems to be a combination of (a) in English, verbs in this tense are usually shorter than in other tenses, (b) Git itself uses the imperative when it creates messages, so you might as well match. 
+- Using a separate subject line (concise, approx 50 characters) and optional body text (longer description)
+- ["Atomic Commits"](https://sparkbox.com/foundry/atomic_commits_with_git), i.e. each commit represents one small, complete, independent chunk of work. This chunk should be large enough to contain a complete change, ideally with the codebase working both before and after the change, and also small enough that it can be described/understood easily and it represents only one change. If multiple changes are represented in one commit, it would be more difficult to track the history of the changes or their separate effects on the code. 
+- Using the imperative tense of verbs. This convention seems to be a combination of (a) in English, verbs in this tense are usually shorter than in other tenses, (b) Git itself uses the imperative when it creates messages, so you might as well match. 
 
- Many people explicitly follow the [Conventional Commits](https://www.conventionalcommits.org/en/about/) standard. This is a very detailed standard which is designed to allow the use of automated tools to parse and analyse the commit history. The full standard is not useful for me at this time, but one prominent feature which I have begun to use is the inclusion of a keyword at the start of each commit message to indicate the type of change, e.g.:
- - feat: add a new feature
- - fix: fix a bug
- - docu: amend documentation
+Many people explicitly follow the [Conventional Commits](https://www.conventionalcommits.org/en/about/) standard. This is a very detailed standard which is designed to allow the use of automated tools to parse and analyse the commit history. The full standard is not useful for me at this time, but one prominent feature which I have begun to use is the inclusion of a keyword at the start of each commit message to indicate the type of change, e.g.:
+- feat: add a new feature
+- fix: fix a bug
+- docu: amend documentation
 
- This is useful when looking back at past changes in the log, and it also reinforces the practice of only doing one type of change in each commit. 
+This is useful when looking back at past changes in the log, and it also reinforces the practice of only doing one type of change in each commit. 
 
 ----------------------------------------------------------------------
 ### End of README

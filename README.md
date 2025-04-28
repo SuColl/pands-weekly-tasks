@@ -117,7 +117,7 @@ I wrote this if/elif/else approach before I had learned to use the try/except bl
 ### Research and Sources
 Blog post on using isdigit() vs isnumeric() vs isdecimal(), which also reminded me to strip whitespace from the input: [miguendes.me: How to Choose Between isdigit(), isdecimal() and isnumeric() in Python](https://miguendes.me/python-isdigit-isnumeric-isdecimal)
 
-Follow-up reading: [W3Schools: Python String isdecimal() Method](https://www.w3schools.com/python/ref_string_isdecimal.asp), [w3Schools: Python String isdigit() Method](https://www.w3schools.com/python/ref_string_isdigit.asp), [w3Schools: Python String isnumeric() Method](https://www.w3schools.com/python/ref_string_isnumeric.asp)
+Follow-up reading: [W3Schools: Python String isdecimal() Method](https://www.w3schools.com/python/ref_string_isdecimal.asp), [w3Schools: Python String isdigit() Method](https://www.w3schools.com/python/ref_string_isdigit.asp), [W3Schools: Python String isnumeric() Method](https://www.w3schools.com/python/ref_string_isnumeric.asp)
 
 Handy method of slicing the negative sign off a negative integer, and using isdigit() to validate the rest, mentioned on [StackOverflow: "How do I check if a string is a negative number before passing it through int()?"](https://stackoverflow.com/a/78912188)
 
@@ -125,18 +125,32 @@ Handy method of slicing the negative sign off a negative integer, and using isdi
 ----------------------------------------------------------------------
 ## Week 05 Task: weekday.py
 This program outputs whether or not today (at the time of running) is a weekday. There is no user input.
-I used the isoweekday() function in this program because it's my personal preference, and also because of my abiding love and respect for the [International Organization for Standardization](https://www.iso.org/home.html). It also made the coding easier.
 
-Expected output if called on Monday through Friday:
+### Module used
+[DateTime](https://docs.python.org/3/library/datetime.html)
+
+### Expected Output if called on Monday through Friday:
 ```
 $ python weekday.py 
 Yes, unfortunately today is a weekday.
 ```
-Expected output if called on Saturday or Sunday:
+### Expected Output if called on Saturday or Sunday:
 ```
 $ python weekday.py 
 It is the weekend, yay!
 ```
+
+### Notes on my approach
+I used the isoweekday() function in this program because it's my personal preference, and also because of my abiding love and respect for the [International Organization for Standardization](https://www.iso.org/home.html). It also made the coding easier.
+
+### Research and Sources
+[W3Schools: Python Datetime](https://www.w3schools.com/python/python_datetime.asp)
+
+[Python documentation: datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
+
+lovely deep blogpost about datetime: [Towards Data Science: Time Travel Made Easy: A Comprehensive Guide to Python Datetime](https://towardsdatascience.com/time-travel-made-easy-a-comprehensive-guide-to-python-datetime-326dd1c57391/)
+
+
 ----------------------------------------------------------------------
 ## Week 06 Task: squareroot.py
 This program takes a positive floating-point number as input and outputs an approximation of its square root, using a custom sqrt() function, as an exercise in creating functions. 
@@ -232,13 +246,13 @@ W3schools list of Python built-in exceptions: https://www.w3schools.com/python/p
 
 ### Additional features
 - I dynamcally set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
-- Added secondary y-axis for the cubic function. As the max value of the histogram is approx. 200 and the value of the cubic funcion is 1000 at x-10, they do not display well on the same vertical scale. 
+- Added secondary y-axis for the cubic function. As the maximum value of the histogram is approximately 200, and the value of the cubic funcion is 1000 at x=10, they do not display well on the same vertical scale. 
 
 ### Expected Output
 This program generates a PNG image showing the requested histogram and cube function.
 ![](histogram_and_cube_function.png)
 
-### Research performed for this task
+### Research and Sources
 **Using numpy.random.Generator().normal**  
 The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
 The method to generate the normally-distributed datapoints for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
@@ -277,10 +291,10 @@ The [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/) o
 [Python Morsels: Breaking up long lines of code in Python](https://www.pythonmorsels.com/breaking-long-lines-code-python/)  
 [GeeksForGeeks: Python – Multi-Line Statements](https://www.geeksforgeeks.org/python-multi-line-statements/)
 
-## Research notes on git commit messages
+## Research notes on good git commit practices and commit messages
 I have not consistently used any particular git commit message convention in these weekly tasks, but I am slowly starting to incorporate the advice from the sources below. 
 
-There are many, **many** articles and blog posts on what comprises a 'good' Git commit message:
+There are many, _many_ articles and blog posts on what comprises a 'good' Git commit message. Some I have read:
  - [freeCodeCamp(2019): How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
  - [Kelvin Romero @Medium(2023): Writing good commit messages](https://kelvinromero.medium.com/writing-good-commit-messages-527679b1babb)
  - [Hashnode(2019): Which commit message convention do you use at work?](https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g)

@@ -7,9 +7,20 @@
 # Author: Susan Collins
 
 # import the NumPy library for array manipulation
-import numpy as np
+try:
+    import numpy as np
+except ModuleNotFoundError:
+    print("This program requires the module 'NumPy'.\n"
+        "Please install this module and try again. \nGoodbye.")
+    exit()
+
 # import the MatPlotLib.PyPlot library for plotting
-import matplotlib.pyplot as plt
+try:
+    import matplotlib.pyplot as plt
+except ModuleNotFoundError:
+    print("This program requires the module 'MatPlotLib'.\n"
+        "Please install this module and try again. \nGoodbye.")
+    exit()
 
 
 # Parameters to generate set of normally distributed data points

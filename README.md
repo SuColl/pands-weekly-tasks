@@ -223,7 +223,7 @@ Finished - there are 50837 instance(s) of the letter t in the file pride_and_pre
 # Calling this program with a valid text file and specifying multiple letters to count
 $ python es.py pride_and_prejudice.txt xyzzy
 filename is pride_and_prejudice.txt
-This program can only count single letters, and you asked it to count xyzzy. 
+This program can only count single letters, and you asked it to count "xyzzy". 
 Goodbye.
 
 # Calling this program with no file specified prints help information
@@ -232,12 +232,20 @@ This is a program to count the instances of the letter 'e' in a text file.
 You may choose a different letter to count by specifying it on the command line.
 This program should be called as: $ python es.py <FILE.TXT> <optional letter>
 
-# Calling this program with a file that does not exist prints a relevant text message
+# Calling this program with a file that does not exist prints a 
+# relevant text message
 $ python es.py file_not_existing.txt
 filename is file_not_existing.txt
 Error! The file file_not_existing.txt does not exist.
 
-# Calling this program with a file that is not a text file prints a relevant text message
+# Calling this program with a file for which the user does not have 
+# read permission prints a relevant text message
+$ python es.py frankenstein_nopermissions.txt
+filename is frankenstein_nopermissions.txt
+Error! You do not have permission to read the file frankenstein_nopermissions.txt
+
+# Calling this program with a file that is not a text file prints a 
+# relevant text message
 $ python es.py testbin.bin
 filename is testbin.bin
 Error! The file testbin.bin is not a text file.
@@ -248,6 +256,7 @@ Error! The file testbin.bin is not a text file.
 Error handling: I found the correct names of exceptions for this program by trial and error. 
 - importing a module that had not been installed throws a `ModuleNotFoundError`.
 - trying to open a file which does not exist throws a `FileNotFoundError`.
+- attempting to open a file for which I do not have read permission throws a `PermissionError`
 - attempting to open a binary file as a text file throws a `UnicodeDecodeError`.  
 
 ### Research and Sources

@@ -30,6 +30,8 @@ This program prompts the user to input two money amounts (in cent.) The program 
 ### Expected Output
 ```
 $ python bank.py
+Enter the first amount (cent):
+That is not a valid amount of cent.
 Enter the first amount (cent):jdfnlsdnf
 That is not a valid amount of cent.
 Enter the first amount (cent):2222.444
@@ -148,11 +150,13 @@ It is the weekend, yay!
 I used the isoweekday() function in this program because it's my personal preference, and also because of my abiding love and respect for the [International Organization for Standardization](https://www.iso.org/home.html). It also made the coding easier.
 
 ### Research and Sources
-[W3Schools: Python Datetime](https://www.w3schools.com/python/python_datetime.asp)
+Initial explanation of datetime: [W3Schools: Python Datetime](https://www.w3schools.com/python/python_datetime.asp)
 
-[Python documentation: datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html)
+Python documentation for datetime: [datetime — Basic date and time types](https://docs.python.org/3/library/datetime.html) which led me to the `datetime.date.today()` and `date.isoweekday()` methods
 
-lovely deep blogpost about datetime: [Towards Data Science: Time Travel Made Easy: A Comprehensive Guide to Python Datetime](https://towardsdatascience.com/time-travel-made-easy-a-comprehensive-guide-to-python-datetime-326dd1c57391/)
+Worked example using `datetime.datetime.today().weekday()`: [shecodes.io: How to Check What Day of the Week it is in Python](https://www.shecodes.io/athena/10185-how-to-check-what-day-of-the-week-it-is-in-python)
+
+General reading: this lovely deep blogpost about datetime - [Towards Data Science: Time Travel Made Easy: A Comprehensive Guide to Python Datetime](https://towardsdatascience.com/time-travel-made-easy-a-comprehensive-guide-to-python-datetime-326dd1c57391/)
 
 
 ----------------------------------------------------------------------
@@ -206,7 +210,7 @@ This program will print help text if there is no filename specified.
 ### Additional features 
 - I added an option to specify a different character to be counted on the command-line, 
 as `$ python es.py <FILE.TXT> <optional letter>`. Only a one-character argument will be accepted.
-- This program will count both lowercase and uppercase instances of e (or any other letter specified) and provide the combined total.
+- This program will count both lowercase and uppercase instances of e (or any other letter specified, or a single numeric digit) and provide the combined total.
 
 ### Expected Output
 ```
@@ -264,7 +268,7 @@ Txt files for development and testing were downloaded from [Project Gutenberg](w
 
 Tutorial on passing command-line arguments to a Python program: [tutorialspoint.com: Python - Command-Line Arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)
 
-Terminating a program (sys.exit()): [StackOverflow: How do I terminate a script?](https://stackoverflow.com/a/73673)
+Terminating a program (using exit()): [StackOverflow: How do I terminate a script?](https://stackoverflow.com/a/73673)
 
 Error Handling: W3schools on try/except/else/finally: [W3Schools: Python Try Except](https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0)
 
@@ -292,16 +296,22 @@ This program generates a PNG image showing the requested histogram and cube func
 ![](histogram_and_cube_function.png)
 
 ### Research and Sources
-**Using numpy.random.Generator().normal**  
-The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method.
+**Using numpy.random.Generator().normal:**  
+The NumPy documentation states that the RandomState function used in lectures has been superseded by the Generator method: [[NumPy.org: v2.2 What's new or different](https://numpy.org/doc/2.2/reference/random/new-or-different.html)]
+
 The method to generate the normally-distributed data points for this program was taken from https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
 
-**Plotting a second function on the same plot using a secondary y-axis**  
+**Plotting a second function on the same plot using a secondary y-axis:**  
 I followed this worked example, which let me create a twinned second Axes for the plot:
-[MatPlotLib.org:Plots with different scales](https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html)  
-Plotting a combined legend for both functions required calling `figure.legend()` ([documented here](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.legend.html)), and using a `bbox_to_anchor` parameter to position the legend properly (method taken from [StackOverflow comment](https://stackoverflow.com/a/47370214))
+[MatPlotLib.org:Plots with different scales](https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html) 
 
-**Superscript on plot axis labels**   
+**Title over both functions:**
+ The documentation for `matplotlib.figure()` gave me the method `Figure.suptitle()` ([here](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#)), which places a main title over all the subplots.
+
+**Legend that captures both functions:**
+Plotting a combined legend for both functions required calling `figure.legend()` ([documented here](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.legend.html)). The use of fig.legend() to capture information for both plots, and the use of a bounding box `bbox_to_anchor` parameter to correctly place the legend were adapted from the worked example in this [StackOverflow comment](https://stackoverflow.com/a/47370214).
+
+**Superscript on plot axis labels:**   
 I wanted to display x^3 as x³ in my plot title and labels.  
 A [GeeksForGeeks post](https://www.geeksforgeeks.org/how-to-print-superscript-and-subscript-in-python/) offered a way to insert Unicode directly into an f-string. This would work if I was using a fixed power of x, but I am using the variable 'index' to represent the power and I would like the plot title to change dynamically if this variable changes. 
 The MathPlotLib documentation states that MathPlotLib supports a subset of TeX markup called [MathText](https://matplotlib.org/stable/users/explain/text/mathtext.html), so I can use that to apply superscript formatting to the variable value in my chart title.  
@@ -310,7 +320,7 @@ With index=3, `title="plot of $y=x^{index}$"`  renders as: plot of $y=x^3$
 Note that I haven't had to use curly braces in the TeX expression itself; if I did, I would have to double-brace to avoid Python interpreting them as f-string variables. Through trial-and-error, I find that:  
 With index=3, `title="plot of $y=x^{{5+{index}}}$"` renders as: plot of $y=x^{5+3}$
 
-**Superscript in markdown**  
+**Superscript in markdown:**  
 I then had to research a way to insert x³ this README.md file!  
 Pure markdown does not have a superscript or subscript syntax.   
 This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscript-in-markdown-github-flavored) suggested some other solutions: 

@@ -34,7 +34,8 @@ n_distrib_values = 1000
 
 # The NumPy documentation states that the RandomState function used in 
 # lectures has been superseded by the Generator method.
-# This method taken from NumPy documentation - see README
+# This approach taken from NumPy documentation:
+# https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html
 # Seed the random number generator, for debugging purposes
 rng = np.random.default_rng(seed=1)
 # Generate set of normally distributed data points
@@ -62,6 +63,9 @@ integer_bins = np.arange(lowest_bin_centre-0.5, highest_bin_centre+0.5, 1)
 
 
 ########## Building the plot
+# This approach to plot a second function using a secondary Y-axis was 
+# adapted from this worked example at MatPlotLib.org:
+# https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html
 # use subplots() to get access to the Axes object.
 # An Axes object encapsulates all the elements of an 
 # individual (sub-)plot in a figure.
@@ -102,6 +106,11 @@ plt.xticks(range(x_axis_minimum, x_axis_maximum, 1))
 
 
 # Add main title and legend
+# Reference: The documentation for matplotlib.figure() gave me 
+# the method Figure.suptitle(), 
+# https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#
+# which places a main title over all the subplots.
+
 # Use figure object to title and legend the entire plot (both Axes)
 # TeX symbols \mu and \sigma require double escapes inside the string.
 fig.suptitle(
@@ -110,10 +119,17 @@ fig.suptitle(
     f"and plot of $h(x)=x^{index}$"
 )
 
+
+# This use of fig.legend() to capture information for both plots, and 
+# the use of a bounding box argument to correctly place the legend 
+# were adapted from the worked example in this StackOverflow comment: 
+# https://stackoverflow.com/a/47370214
 fig.legend(
     loc="upper left", bbox_to_anchor=(0, 1), bbox_transform=ax1.transAxes
 )
 
+# This line of code take directly from the worked example at MatPlotLib.org:
+# https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html
 fig.tight_layout()  # otherwise the right y-label is slightly clipped
 
 # Print to file

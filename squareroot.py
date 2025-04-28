@@ -32,10 +32,13 @@ def sqrt(input, tolerance = 0):
     # loop over the Newtonian iteration until the difference between the 
     # guess and the real root is less than the tolerance
     while difference > tolerance:
-        # see README for mathematical equation
+        # Mathematical equation for Newton's method for computing square roots
+        # was taken from Wikipedia:
+        # https://en.wikipedia.org/wiki/Newton%27s_method#Examples
         guess = 0.5 * (guess + (input / guess)) 
 
-        # get difference between current root guess squared amd input number
+        # get absolute difference between <current guess squared> 
+        # and input number
         difference = abs(input - (guess * guess))
 
     # return the final guess
@@ -44,7 +47,9 @@ def sqrt(input, tolerance = 0):
 
 # Function to read in and validate positive float from user
 def read_in_positive_float():
-    # initialise input variable as NoneType
+    # initialise input variable as NoneType.
+    # # Reference on the use of the NoneType:
+    # https://www.geeksforgeeks.org/declare-variable-without-value-python/
     number = None
 
     while number == None:
@@ -64,7 +69,7 @@ def read_in_positive_float():
                 number = None
 
     # Return the positive float.
-    return(number)
+    return number
 
 
 ### Main code block ###

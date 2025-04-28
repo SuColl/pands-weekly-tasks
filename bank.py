@@ -4,6 +4,8 @@
 # author: Susan Collins
 
 # get first amount and check that it is an integer. If not, ask again.
+# Reference on the use of the NoneType:
+# https://www.geeksforgeeks.org/declare-variable-without-value-python/
 amount1 = None
 while amount1 == None:
     try:

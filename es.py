@@ -23,6 +23,11 @@ except ModuleNotFoundError:
 # Function to print help message, called if there are no command-line 
 # arguments specified with this program. 
 # This function uses argv[0] to dynamically print the program name. 
+# References consulted for the use of argv are first this tutorial:
+# https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# and secondly the entry for sys.argv in the documentation 
+# for the sys module:
+# https://docs.python.org/3/library/sys.html
 def print_help():
     print(
         "This is a program to count the instances of the letter 'e' in a "
@@ -56,6 +61,9 @@ def count_letters(string, letter):
 # will always be at least 1 when the program is run.
 if len(sys.argv) < 2:
     print_help()
+
+    # Reference consulted for exit() is this StackOverflow comment:
+    # https://stackoverflow.com/a/73673
     exit()
 
 
@@ -70,8 +78,10 @@ print(f"filename is {FILENAME}")
 # The count will combine uppercase and lowercase instances.
 try: 
     # get letter as next command-line argument, stripped of any whitespace
-    letter_to_count = sys.argv[2].strip()       
+    letter_to_count = sys.argv[2].strip()    
 
+# Reference consulted for list of Python exceptions:
+# https://www.w3schools.com/python/python_ref_exceptions.asp
 except IndexError:
     # if there is no second command-line argument, the sys.argv[2].strip() 
     # line above will fail with IndexError
@@ -105,6 +115,9 @@ try:
             f"Finished - there are {count} instance(s) of the letter "
             f"{letter_to_count} in the file {FILENAME} "
         )
+
+# Reference consulted for list of Python exceptions:
+# https://www.w3schools.com/python/python_ref_exceptions.asp
 
 # Exception if the file does not exist
 except FileNotFoundError:

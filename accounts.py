@@ -12,6 +12,8 @@ account_number = ""
 # get input string. As the account number was originally described as 
 # "10-character", I assume it may contain both digits and letters, and 
 # cast it as a string.
+# Reference on isalnum():
+# https://www.w3schools.com/python/ref_string_isalnum.asp
 # While loop until alphanumeric string is input
 while not account_number.isalnum():
     account_number = str(input("Please enter an account number: "))

@@ -1,4 +1,4 @@
-# colllatz.py
+# collatz.py
 # This program asks the user to input any positive integer, then repeats 
 # two simple arithmetic operations on this number, after the manner of the 
 # Collatz conjecture. 
@@ -12,6 +12,14 @@
 valid = False
 
 
+
+# Below loop uses isdigit(). 
+# The following sources were used to research the differences between 
+# isdigit(), isdecimal() and isnumeric()
+# https://miguendes.me/python-isdigit-isnumeric-isdecimal
+# https://www.w3schools.com/python/ref_string_isdecimal.asp
+# https://www.w3schools.com/python/ref_string_isdigit.asp
+# https://www.w3schools.com/python/ref_string_isnumeric.asp
 # Create loop until the input number is validated
 while valid == False:
 
@@ -29,7 +37,9 @@ while valid == False:
     elif number == "0":  
         print(f"You entered {number}, that's not a positive integer.")
 
-    # check if input string is a negative integer
+    # check if input string is a negative integer. This method is adapted 
+    # from a StackOverflow comment:
+    # https://stackoverflow.com/a/78912188
     elif (number[0]=="-" and number[1:].isdigit()):    
         print(f"You entered {number}, that's a negative integer.")
 

@@ -1,7 +1,9 @@
 # Local files used for testing
 pride_and_prejudice.txt
 frankenstein.txt
+frankenstein_nopermissions.txt
 testbin.bin
+testbin_nopermissions.bin
 test_short.txt
 
 # Byte-compiled / optimized / DLL files

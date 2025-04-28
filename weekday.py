@@ -1,16 +1,19 @@
-# A program that outputs whether or not today is a weekday. There is no user input
+# A program that outputs whether or not today, at the time of running, 
+# is a weekday or the weekend. 
+# There is no user input.
+
 # Author: Susan Collins
 
-# sources used: https://www.w3schools.com/python/python_datetime.asp and https://docs.python.org/3/library/datetime.html
-
-# lovely deep blogpost about datetime from towardsdatascience.com: https://towardsdatascience.com/time-travel-made-easy-a-comprehensive-guide-to-python-datetime-326dd1c57391/
-
-# note: This weekly task seems very short and I wonder if I'm missing something...
+# note: This weekly task seems very short and I wonder if I'm missing
+# something...
 
 # import the module datetime which allows me to access date and time objects
 import datetime
 
-# Returns the day of the week as an integer, where Monday is 1 and Sunday is 7. (I use isoweekday() for personal preference. I could also have used the more standard weekday() function which returns Monday as 0 and Sunday as 6.)
+# Returns the day of the week as an integer, where Monday is 1 and 
+# Sunday is 7. 
+# I use isoweekday() for personal preference. I could also have used the 
+# more standard weekday() function which returns Monday as 0 and Sunday as 6.)
 weekday_number = datetime.datetime.today().isoweekday()
 
 # if the weekday_number is 1 to 5, it is a weekday.

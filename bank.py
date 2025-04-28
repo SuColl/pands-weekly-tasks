@@ -4,17 +4,16 @@
 # author: Susan Collins
 
 # get first amount and check that it is an integer. If not, ask again.
-amount1 = False
-while amount1 == False:
+amount1 = None
+while amount1 == None:
     try:
         amount1=int(input("Enter the first amount (cent):"))
     except ValueError:
         print(f"That is not a valid amount of cent.")
 
-
 #get second amount and check that it is an integer. If not, ask again.
-amount2 = False
-while amount2 == False:
+amount2 = None
+while amount2 == None:
     try:
         amount2=int(input("Enter the second amount (cent):"))
     except ValueError:

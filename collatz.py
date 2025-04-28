@@ -21,11 +21,11 @@ while valid == False:
     # strip whitespace from input string
     number = number.strip()
 
-    # check input string has non-zero length
+    # check input string for zero length
     if len(number) == 0:        
         print(f"That's not a positive integer, you entered nothing.")
 
-    # check input string is not 0
+    # check input string for 0
     elif number == "0":  
         print(f"You entered {number}, that's not a positive integer.")
 
@@ -33,11 +33,11 @@ while valid == False:
     elif (number[0]=="-" and number[1:].isdigit()):    
         print(f"You entered {number}, that's a negative integer.")
 
-    # check if input string is anything non-numeric
+    # check input string is a float or a non-numeric string
     elif not number.isdigit():
         print(f"That's not a positive integer")
 
-    # mark input as valid and proceed
+    # else mark input as valid and proceed
     else:
         valid = True
 

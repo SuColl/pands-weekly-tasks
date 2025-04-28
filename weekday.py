@@ -8,7 +8,12 @@
 # something...
 
 # import the module datetime which allows me to access date and time objects
-import datetime
+try:
+    import datetime
+except ModuleNotFoundError:
+    print("This program requires the module 'datetime'.\n"
+        "Please install this module and try again. \nGoodbye.")
+    exit()
 
 # Returns the day of the week as an integer, where Monday is 1 and 
 # Sunday is 7. 

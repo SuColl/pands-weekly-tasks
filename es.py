@@ -27,10 +27,12 @@ def print_help():
     print(
         "This is a program to count the instances of the letter 'e' in a "
         "text file. \nYou may choose a different letter to count by "
-        "specifying it on the command line.")
+        "specifying it on the command line."
+        )
     print(
         f"This program should be called as: "
-        f"$ python {sys.argv[0]} <FILE.TXT> <optional letter>")
+        f"$ python {sys.argv[0]} <FILE.TXT> <optional letter>"
+        )
 
 
 # Function to count the instances of a letter in a given string. 

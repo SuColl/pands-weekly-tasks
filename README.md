@@ -2,7 +2,7 @@
 author: Susan Collins
 
 Description of this repository:  
-A collection of submitted exercises for the Programming and Scriping Module, part of the Higher Diploma in Data Analytics, at Atlantic Technological University, Ireland, Spring 2025.
+A collection of submitted exercises for the Programming and Scripting Module, part of the Higher Diploma in Data Analytics, at Atlantic Technological University, Ireland, Spring 2025.
 
  Developed using [python](https://www.python.org/) v3.12.7  
  Modules used in these programs:  
@@ -40,8 +40,8 @@ The sum of these is €45.67
 ```
 
 ### Notes on my approach
-- I initilise the input variables as None so that once they had a value assigned, the expression `var == None` always evaulates as False. 
-If they were initialised as False, then with an input integer of 0 the expression `var == False` would evaulate as True.
+- I initialise the input variables as None so that once they have a value assigned, the expression `var == None` always evaluates as False. 
+If they were initialised as booleas False, then with an input integer of 0 the expression `var == False` would evaluate as True.
 
 - My initial method for calculating the Euro amount produced an inaccurate result if the sum of the inputs was negative, due to the floor operator rounding down. My final code uses another method.
 
@@ -86,8 +86,8 @@ Check if string is alphanumeric: [W3Schools: Python String isalnum() Method](htt
 ----------------------------------------------------------------------
 ## Week 04 Task: collatz.py
 This program asks the user to input any positive integer, then repeats two simple arithmetic operations on this number, after the manner of the Collatz conjecture. If the number is even it is divided by two, if it is odd it is multiplied by three and 1 is added. The program ends if/when the current value reaches 1. 
-- this program performs some simple checks on the user input; if the input is not a positive integer, it requests another input.
-- future development proposed: (1) allow user to enter a special string to stop the program? (2) count the number of steps the integer takes to reach 1? (3) compare this result to nearby integers?
+
+This program performs some simple checks on the user input; if the input is not a positive integer, it requests another input.
 
 ### Expected Output
 ```
@@ -106,7 +106,7 @@ Please enter a positive integer: 27
 
 ### Notes on my approach
 For this program, as input error-checking I use a series of if/elif/else statements to check that the input is a positive integer. 
-- `len(number) == 0` evaluates True if the input is an emmpty string
+- `len(number) == 0` evaluates True if the input is an empty string
 - `number == "0"` evaluates True if the the input is zero
 - `number[0]=="-" and number[1:].isdigit())` evaluates True if the input is a negative integer
 - `not number.isdigit()` evaluates True if the input is a float or a non-numeric string
@@ -202,7 +202,7 @@ This program will print help text if there is no filename specified.
 ### Additional features 
 - I added an option to specify a different character to be counted on the command-line, 
 as `$ python es.py <FILE.TXT> <optional letter>`. Only a one-character argument will be accepted.
-- This program will count both lowercase and uppercase instances of e (or any othey letter specified) and provide the combined total.
+- This program will count both lowercase and uppercase instances of e (or any other letter specified) and provide the combined total.
 
 ### Expected Output
 ```
@@ -229,7 +229,7 @@ You may choose a different letter to count by specifying it on the command line.
 This program should be called as: $ python es.py <FILE.TXT> <optional letter>
 
 # Calling this program with a file that does not exist prints a relevant text message
-$ pythom es.py file_not_existing.txt
+$ python es.py file_not_existing.txt
 filename is file_not_existing.txt
 Error! The file file_not_existing.txt does not exist.
 
@@ -269,8 +269,8 @@ W3schools list of Python built-in exceptions: [W3Schools:Python Built-in Excepti
 >Please put a copy of the image of the plot (.png file) into the repository
 
 ### Additional features
-- I dynamcally set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
-- Added secondary y-axis for the cubic function. As the maximum value of the histogram is approximately 200, and the value of the cubic funcion is 1000 at x=10, they do not display well on the same vertical scale. 
+- I dynamically set my histogram bins to be of size 1 and centred on each integer value. Code to generate a bin limit range using `numpy.arange()` was suggested by [this StackOverflow answer](https://stackoverflow.com/a/12176344).
+- Added secondary y-axis for the cubic function. As the maximum value of the histogram is approximately 200, and the value of the cubic function is 1000 at x=10, they do not display well on the same vertical scale. 
 
 ### Expected Output
 This program generates a PNG image showing the requested histogram and cube function.
@@ -326,7 +326,7 @@ There are many, _many_ articles and blog posts on what comprises a 'good' Git co
 
 Common advice from these writers include:
  - separate subject line (concise, approx 50 characters) and optional body text (longer description)
- - ["Atomic Commits"](https://sparkbox.com/foundry/atomic_commits_with_git), i.e. each commit repesents one small, complete, independent chunk of work. This chunk should be large enough to contain a complete change, ideally with the codebase working both before and after the change, and also small enough that it can be described/understood easily and it represents only one change. If multiple changes are represented in one commit, it would be more difficult to track the history of the changes or their separate effects on the code. 
+ - ["Atomic Commits"](https://sparkbox.com/foundry/atomic_commits_with_git), i.e. each commit represents one small, complete, independent chunk of work. This chunk should be large enough to contain a complete change, ideally with the codebase working both before and after the change, and also small enough that it can be described/understood easily and it represents only one change. If multiple changes are represented in one commit, it would be more difficult to track the history of the changes or their separate effects on the code. 
   - Using the imperative tense of verbs. This convention seems to be a combination of (a) in English, verbs in this tense are usually shorter than in other tenses, (b) Git itself uses the imperative when it creates messages, so you might as well match. 
 
  Many people explicitly follow the [Conventional Commits](https://www.conventionalcommits.org/en/about/) standard. This is a very detailed standard which is designed to allow the use of automated tools to parse and analyse the commit history. The full standard is not useful for me at this time, but one prominent feature which I have begun to use is the inclusion of a keyword at the start of each commit message to indicate the type of change, e.g.:

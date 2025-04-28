@@ -6,16 +6,30 @@
 # author: Susan Collins
 # v01 assumed that a 10-digit number would be entered. 
 
+# Initialize input string as empty string
+account_number = ""
+
 # get input string. As the account number was originally described as 
 # "10-character", I assume it may contain both digits and letters, and 
 # cast it as a string.
-account_number = str(input("Please enter an account number: "))
+# While loop until alphanumeric string is input
+while not account_number.isalnum():
+    account_number = str(input("Please enter an account number: "))
+
+    # if the input is empty
+    if len(account_number) == 0:
+        print("You entered nothing. Try again.")
+
+    # if special characters are entered
+    elif account_number.isalnum() == False:
+        print("Please only enter alphanumeric characters (Aa-Zz, 0-9)")
+    
 
 # get length of the input string
 account_number_length = len(account_number)
 
-# Assuming the input is valid, extract the last 4 characters of the s
-# tring. If the original account number has four characters or fewer, 
+# Extract the last 4 characters of the account number.
+# If the original account number has four characters or fewer, 
 # it will output without obfuscation.
 account_number_tail = account_number[-4:]
 

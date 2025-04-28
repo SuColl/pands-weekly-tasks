@@ -19,15 +19,9 @@ while amount2 == None:
     except ValueError:
         print(f"That is not a valid amount of cent.")
 
-##################################
-# Method 1 - arithmetically calculate the number of whole euro 
-# and the number of remaining cents separately.
-wholeEuro = (amount1 + amount2) // 100
-remainingCent = (amount1 + amount2) - (wholeEuro * 100)
-print(f"(Method 1): The sum of these is €{wholeEuro}.{remainingCent}")
 
 ##################################
-# Method 2 - calculate the Euro total as a float
+# Calculate the Euro total as a float
 totalEuro = (amount1 + amount2) / 100 
 # print the sum in Euro
-print(f"(Method 2): The sum of these is €{totalEuro:.2f}")
+print(f"The sum of these is €{totalEuro:.2f}")

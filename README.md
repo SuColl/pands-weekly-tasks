@@ -1,24 +1,66 @@
 # Programming and Scripting Weekly Tasks
 author: Susan Collins
 
-Description of this repo: A collection of submitted exercises for the Programming and Scriping Module, part of The Higher Diploma in Data Analytics course at the Atlantic Technological University, Ireland, Spring 2025.
+Description of this repository:  
+A collection of submitted exercises for the Programming and Scriping Module, part of the Higher Diploma in Data Analytics, at Atlantic Technological University, Ireland, Spring 2025.
 
- - Developed using python v3.12.7
+ Developed using [python](https://www.python.org/) v3.12.7  
+ Modules used in these programs:  
+- [NumPy](https://numpy.org)
+- [MatPlotLib](https://matplotlib.org/) 
+- [Sys](https://docs.python.org/3/library/sys.html)
+- [DateTime](https://docs.python.org/3/library/datetime.html)
 
+----------------------------------------------------------------------
 ## Week 02 Task: bank.py
-This program will prompt the user and read in two money amounts (in cent.) The program will then:
+This program prompts the user to input two money amounts (in cent.) The program will then:
 1. Add the two amounts
 2. Print out the answer in a human readable format, with a euro sign and decimal point between the euro and cent of the amount 
 
+### Expected Output
+```
+$ python bank.py
+> Enter the first amount (cent):jdfnlsdnf
+> That is not a valid amount of cent.
+> Enter the first amount (cent):2222.444
+> That is not a valid amount of cent.
+> Enter the first amount (cent):5023
+> Enter the second amount (cent):-456
+> The sum of these is €45.67
+```
+
+### Notes on my approach
+- I initilised the input variables as None so that once they had a value assigned, the expression `var == None` would always evaulate as False. 
+If they were initialised as False, then with an input integer of 0 the expression `var == False` would evaulate as True.
+
+- My initial method for calculating the Euro amount produced an inaccurate result if the sum of the inputs was negative, due to the floor operator rounding down. My final code uses another method.
+
+```python
+##################################
+# Method 1 - arithmetically calculate the number of whole euro 
+# and the number of remaining cents separately.
+wholeEuro = (amount1 + amount2) // 100
+remainingCent = (amount1 + amount2) - (wholeEuro * 100)
+print(f"(Method 1): The sum of these is €{wholeEuro}.{remainingCent:02d}")
+# This code produces inaccurate results.
+```
+
+### Research and Sources
+On the None type: [GeeksForGeeks](https://www.geeksforgeeks.org/declare-variable-without-value-python/)
+Floor divisions: [StackOverflow](https://stackoverflow.com/questions/37283786/floor-division-with-negative-number)
+
+----------------------------------------------------------------------
 ## Week 03 Task: accounts.py
 This program reads in an alpha-numeric account number, and outputs the account number with only the last 4 digits showing (and the preceding digits replaced with Xs).
 - If the account number has 4 digits or fewer, it is output without obfuscation.
 
+----------------------------------------------------------------------
 ## Week 04 Task: collatz.py
 This program asks the user to input any positive integer, then repeats two simple arithmetic operations on this number, after the manner of the Collatz conjecture. If the number is even it is divided by two, if it is odd it is multiplied by three and 1 is added. The program ends if/when the current value reaches 1. 
 - this program performs some simple checks on the user input; if the input is not a positive integer, it requests another input.
 - future development proposed: (1) allow user to enter a special string to stop the program? (2) count the number of steps the integer takes to reach 1? (3) compare this result to nearby integers?
 
+----------------------------------------------------------------------
 ## Week 05 Task: weekday.py
 This program outputs whether or not today (at the time of running) is a weekday. There is no user input.
 I used the isoweekday() function in this program because it's my personal preference, and also because of my abiding love and respect for the [International Organization for Standardization](https://www.iso.org/home.html). It also made the coding easier.
@@ -33,7 +75,7 @@ Expected output if called on Saturday or Sunday:
 $ python weekday.py 
 It is the weekend, yay!
 ```
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 ## Week 06 Task: squareroot.py
 This program takes a positive floating-point number as input and outputs an approximation of its square root, using a custom sqrt() function, as an exercise in creating functions. 
 - The custom sqrt() function uses Newton's method of finding square roots. This is an iterative process where each step gives a result that is closer to the true answer. Given a positive number $a$, for which you want to find the square root, and given a starting approximate value of the root $x_n$, the iteration is given by:
@@ -54,7 +96,7 @@ Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
 
 LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
 
----------------------------------------------------------------
+----------------------------------------------------------------------
 ## Week 07 Task: es.py
 **Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these as two files with separate histories.**
 >Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
@@ -117,7 +159,7 @@ Error Handling Sources:
 W3schools on try/except/else/finally: https://www.w3schools.com/python/python_try_except.asp#gsc.tab=0   
 W3schools list of Python built-in exceptions: https://www.w3schools.com/python/python_ref_exceptions.asp   
 
----------------------------------------------------------------
+----------------------------------------------------------------------
 ## Week 08 Task: plottask.py
 >Instructions: Write a program called plottask.py that displays:
 >    a histogram of a normal distribution of a 1000 values with a mean of 5 and standard deviation of 2, 
@@ -161,7 +203,7 @@ This [StackOverflow post](https://stackoverflow.com/questions/15155778/superscri
 2. Embedded LaTeX: `$x^{3}$`  displays as $x^{3}$ 
 3. Directly typing x³ as Unicode works, and leaves the raw Markdown file more readable.
 
-----------------------------------------------------------
+----------------------------------------------------------------------
 # General Research / Reading / Notes
 
 ## Research notes on Python style conventions
@@ -193,3 +235,6 @@ Common advice from these writers include:
  - docu: amend documentation
 
  This is useful when looking back at past changes in the log, and it also reinforces the practice of only doing one type of change in each commit. 
+
+----------------------------------------------------------------------
+### End of README

@@ -13,7 +13,7 @@
 
 # custom sqrt function, currently prints results at each step
 def sqrt(input, tolerance = 0):
-    # The tolerance parameter tells the fuction how close the final 
+    # The tolerance parameter tells the function how close the final 
     # guess must be to the true root
     print(f"you called the sqrt function for {input}")
 
@@ -45,8 +45,24 @@ def sqrt(input, tolerance = 0):
 
 
 ### Main code block ###
-# No validation or error-checking yet
-number = float(input("Please enter a positive floating-point number: "))
+number = None
+
+while number == None:
+    try: 
+        number = float(
+            input("Please enter a positive floating-point number: ")
+            )
+
+    # ValueError if input is blank or a non-mumeric string
+    except ValueError:
+        print("That was not a floating-point number.")
+
+    # if input is negative, reset number variable and try again
+    else:
+        if number < 0:
+            print("That's a negative number.")
+            number = None
+
 
 # calling the custom sqrt function with no tolerance specified
 answer = sqrt(number)

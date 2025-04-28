@@ -28,11 +28,11 @@ def print_help():
         "This is a program to count the instances of the letter 'e' in a "
         "text file. \nYou may choose a different letter to count by "
         "specifying it on the command line."
-        )
+    )
     print(
         f"This program should be called as: "
         f"$ python {sys.argv[0]} <FILE.TXT> <optional letter>"
-        )
+    )
 
 
 # Function to count the instances of a letter in a given string. 
@@ -87,11 +87,12 @@ else:
     if len(letter_to_count) > 1:                
         print(
             f"This program can only count single letters, and you asked it "
-            f"to count {letter_to_count}. \nGoodbye.")
+            f"to count \"{letter_to_count}\". \nGoodbye."
+        )
         exit()
 
 
-# declare variable to count the instances of 'e's
+# declare variable to count the instances of the letter
 count = 0
 # open the specified text file read-only 
 try:
@@ -102,13 +103,18 @@ try:
             
         print(
             f"Finished - there are {count} instance(s) of the letter "
-            f"{letter_to_count} in the file {FILENAME} ")
+            f"{letter_to_count} in the file {FILENAME} "
+        )
 
 # Exception if the file does not exist
 except FileNotFoundError:
-        print(f"Error! The file {FILENAME} does not exist.")
+    print(f"Error! The file {FILENAME} does not exist.")
+
+# Exception if the user does not have permissions to open the file
+except PermissionError:
+    print(f"Error! You do not have permission to read the file {FILENAME}")
 
 # Exception if the file is not a text file
 except UnicodeDecodeError:
-        print(f"Error! The file {FILENAME} is not a text file.")
+    print(f"Error! The file {FILENAME} is not a text file.")
 

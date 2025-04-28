@@ -53,7 +53,7 @@ def read_in_positive_float():
                 input("Please enter a positive floating-point number: ")
                 )
 
-        # ValueError if input is blank or a non-mumeric string
+        # ValueError if input is blank or a non-numeric string
         except ValueError:
             print("That was not a floating-point number.")
 

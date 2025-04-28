@@ -14,6 +14,7 @@ A collection of submitted exercises for the Programming and Scriping Module, par
 ----------------------------------------------------------------------
 ## Week 01 Task: helloworld.py
 This program prints "Hello, World!" to the terminal.
+
 ### Expected Output
 ```
 $ python helloworld.py
@@ -39,14 +40,15 @@ The sum of these is €45.67
 ```
 
 ### Notes on my approach
-- I initilised the input variables as None so that once they had a value assigned, the expression `var == None` would always evaulate as False. 
+- I initilise the input variables as None so that once they had a value assigned, the expression `var == None` always evaulates as False. 
 If they were initialised as False, then with an input integer of 0 the expression `var == False` would evaulate as True.
 
 - My initial method for calculating the Euro amount produced an inaccurate result if the sum of the inputs was negative, due to the floor operator rounding down. My final code uses another method.
 
 ```python
 ##################################
-# Method 1 - arithmetically calculate the number of whole euro 
+# Initial program method - now removed 
+# Arithmetically calculates the number of whole euro 
 # and the number of remaining cents separately.
 wholeEuro = (amount1 + amount2) // 100
 remainingCent = (amount1 + amount2) - (wholeEuro * 100)
@@ -55,8 +57,8 @@ print(f"(Method 1): The sum of these is €{wholeEuro}.{remainingCent:02d}")
 ```
 
 ### Research and Sources
-On the None type: [GeeksForGeeks](https://www.geeksforgeeks.org/declare-variable-without-value-python/)  
-Floor division discussion: [StackOverflow](https://stackoverflow.com/questions/37283786/floor-division-with-negative-number)
+On the None type: [GeeksForGeeks: Declare variable without value](https://www.geeksforgeeks.org/declare-variable-without-value-python/)  
+Floor division discussion: [StackOverflow: Floor division with negative number](https://stackoverflow.com/questions/37283786/floor-division-with-negative-number)
 
 ----------------------------------------------------------------------
 ## Week 03 Task: accounts.py
@@ -79,13 +81,46 @@ XXXXXXXXXX2jkl
 I assume that the input account number should be alphanumeric, i.e. no special characters like %*^&. I use the string method `isalnum()` to check this. 
 
 ### Research and Sources
-Check if string is alphanumeric: [W3Schools](https://www.w3schools.com/python/ref_string_isalnum.asp)
+Check if string is alphanumeric: [W3Schools: Python String isalnum() Method](https://www.w3schools.com/python/ref_string_isalnum.asp)
 
 ----------------------------------------------------------------------
 ## Week 04 Task: collatz.py
 This program asks the user to input any positive integer, then repeats two simple arithmetic operations on this number, after the manner of the Collatz conjecture. If the number is even it is divided by two, if it is odd it is multiplied by three and 1 is added. The program ends if/when the current value reaches 1. 
 - this program performs some simple checks on the user input; if the input is not a positive integer, it requests another input.
 - future development proposed: (1) allow user to enter a special string to stop the program? (2) count the number of steps the integer takes to reach 1? (3) compare this result to nearby integers?
+
+### Expected Output
+```
+$ python collatz.py
+Please enter a positive integer: 
+That's not a positive integer, you entered nothing.
+Please enter a positive integer: 22.345
+That's not a positive integer
+Please enter a positive integer: spam
+That's not a positive integer
+Please enter a positive integer: -12
+You entered -12, that's a negative integer.
+Please enter a positive integer: 27
+27 82 41 124 62 31 94 47 142 71 214 107 322 161 484 242 121 364 182 91 274 137 412 206 103 310 155 466 233 700 350 175 526 263 790 395 1186 593 1780 890 445 1336 668 334 167 502 251 754 377 1132 566 283 850 425 1276 638 319 958 479 1438 719 2158 1079 3238 1619 4858 2429 7288 3644 1822 911 2734 1367 4102 2051 6154 3077 9232 4616 2308 1154 577 1732 866 433 1300 650 325 976 488 244 122 61 184 92 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 1 
+```
+
+### Notes on my approach
+For this program, as input error-checking I use a series of if/elif/else statements to check that the input is a positive integer. 
+- `len(number) == 0` evaluates True if the input is an emmpty string
+- `number == "0"` evaluates True if the the input is zero
+- `number[0]=="-" and number[1:].isdigit())` evaluates True if the input is a negative integer
+- `not number.isdigit()` evaluates True if the input is a float or a non-numeric string
+
+Only once all these checks were passed do I cast the input as an integer, to avoid a ValueError. 
+I wrote this if/elif/else approach before I had learned to use the try/except blocks, and I have left it here in this program as it is perfectly functional for this program, and I may want to use these evaluations again. 
+
+### Research and Sources
+Blog post on using isdigit() vs isnumeric() vs isdecimal(), which also reminded me to strip whitespace from the input: [miguendes.me: How to Choose Between isdigit(), isdecimal() and isnumeric() in Python](https://miguendes.me/python-isdigit-isnumeric-isdecimal)
+
+Follow-up reading: [W3Schools: Python String isdecimal() Method](https://www.w3schools.com/python/ref_string_isdecimal.asp), [w3Schools: Python String isdigit() Method](https://www.w3schools.com/python/ref_string_isdigit.asp), [w3Schools: Python String isnumeric() Method](https://www.w3schools.com/python/ref_string_isnumeric.asp)
+
+Handy method of slicing the negative sign off a negative integer, and using isdigit() to validate the rest, mentioned on [StackOverflow: "How do I check if a string is a negative number before passing it through int()?"](https://stackoverflow.com/a/78912188)
+
 
 ----------------------------------------------------------------------
 ## Week 05 Task: weekday.py
@@ -124,7 +159,7 @@ Newton's method: https://en.wikipedia.org/wiki/Newton%27s_method#Examples
 LaTeX formatting references: https://code.visualstudio.com/docs/languages/markdown and https://www.upyesp.org/posts/makrdown-vscode-math-notation/
 
 ----------------------------------------------------------------------
-## Week 07 Task: es.py
+## Week 07 Task: count_es.py and es.py
 **Please Note: I started developing this program as count_es.py, and after the first commit, I renamed it to es.py. Unfortunately, GitHub sees these as two files with separate histories.**
 >Instructions: Write a program that reads in a text file and outputs the number of e's it contains. Think about what is being asked here, document any assumptions you are making.  
 >The program should take the filename from an argument on the command line. I have not shown you how to do this, you need to look it up.  

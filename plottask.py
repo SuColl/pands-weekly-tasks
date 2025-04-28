@@ -98,7 +98,7 @@ plt.xticks(range(x_axis_minimum, x_axis_maximum, 1))
 
 
 # Add main title and legend
-# Use figure object to title and legenf the entire plot (both Axes)
+# Use figure object to title and legend the entire plot (both Axes)
 # TeX symbols \mu and \sigma require double escapes inside the string.
 fig.suptitle(
     f"Histogram of Normally Distributed Data Points (n={n_distrib_values}, "
